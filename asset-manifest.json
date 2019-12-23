@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/serhii-tyshchenko/StickIT/static/css/main.66a1ba1f.chunk.css",
-    "main.js": "/serhii-tyshchenko/StickIT/static/js/main.55f68493.chunk.js",
-    "main.js.map": "/serhii-tyshchenko/StickIT/static/js/main.55f68493.chunk.js.map",
-    "runtime-main.js": "/serhii-tyshchenko/StickIT/static/js/runtime-main.6d792cc7.js",
-    "runtime-main.js.map": "/serhii-tyshchenko/StickIT/static/js/runtime-main.6d792cc7.js.map",
-    "static/js/2.9e2fa08f.chunk.js": "/serhii-tyshchenko/StickIT/static/js/2.9e2fa08f.chunk.js",
-    "static/js/2.9e2fa08f.chunk.js.map": "/serhii-tyshchenko/StickIT/static/js/2.9e2fa08f.chunk.js.map",
-    "index.html": "/serhii-tyshchenko/StickIT/index.html",
-    "precache-manifest.958544b1cb8505050fb447323b18e7fc.js": "/serhii-tyshchenko/StickIT/precache-manifest.958544b1cb8505050fb447323b18e7fc.js",
-    "service-worker.js": "/serhii-tyshchenko/StickIT/service-worker.js",
-    "static/css/main.66a1ba1f.chunk.css.map": "/serhii-tyshchenko/StickIT/static/css/main.66a1ba1f.chunk.css.map",
-    "static/js/2.9e2fa08f.chunk.js.LICENSE": "/serhii-tyshchenko/StickIT/static/js/2.9e2fa08f.chunk.js.LICENSE",
-    "static/media/fontello.css": "/serhii-tyshchenko/StickIT/static/media/fontello.e2744d93.woff"
+    "main.css": "/StickIT/static/css/main.bf162a94.chunk.css",
+    "main.js": "/StickIT/static/js/main.55f68493.chunk.js",
+    "main.js.map": "/StickIT/static/js/main.55f68493.chunk.js.map",
+    "runtime-main.js": "/StickIT/static/js/runtime-main.f74937d1.js",
+    "runtime-main.js.map": "/StickIT/static/js/runtime-main.f74937d1.js.map",
+    "static/js/2.9e2fa08f.chunk.js": "/StickIT/static/js/2.9e2fa08f.chunk.js",
+    "static/js/2.9e2fa08f.chunk.js.map": "/StickIT/static/js/2.9e2fa08f.chunk.js.map",
+    "index.html": "/StickIT/index.html",
+    "precache-manifest.eeac9f85bd7cf3d62352931a0a2a0545.js": "/StickIT/precache-manifest.eeac9f85bd7cf3d62352931a0a2a0545.js",
+    "service-worker.js": "/StickIT/service-worker.js",
+    "static/css/main.bf162a94.chunk.css.map": "/StickIT/static/css/main.bf162a94.chunk.css.map",
+    "static/js/2.9e2fa08f.chunk.js.LICENSE": "/StickIT/static/js/2.9e2fa08f.chunk.js.LICENSE",
+    "static/media/fontello.css": "/StickIT/static/media/fontello.e2744d93.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.6d792cc7.js",
+    "static/js/runtime-main.f74937d1.js",
     "static/js/2.9e2fa08f.chunk.js",
-    "static/css/main.66a1ba1f.chunk.css",
+    "static/css/main.bf162a94.chunk.css",
     "static/js/main.55f68493.chunk.js"
   ]
 }
