@@ -69,11 +69,9 @@ export default class StickerListAdd extends Component {
                         </button>
                         <button
                             title="Add sticker"
-                            className="sticker__btn sticker__add icon-add"
+                            className="sticker__btn sticker__add icon-plus"
                             onClick={this.addSticker}
-                        >
-                            +
-                        </button>
+                        />
                     </div>
                 </div>
                 <div className="sticker__details">
