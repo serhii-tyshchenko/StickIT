@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
+import { Header } from './components/Layout/Header';
+import { Footer } from './components/Layout/Footer';
 import { StickerList } from './components/StickerList';
 
 import * as db from '../src/services/db';
@@ -27,7 +27,11 @@ class App extends Component {
             return;
         }
     };
-
+    addSticker = sticker => {
+        this.setState({
+            stickers: [...this.state.stickers, sticker]
+        });
+    };
     removeSticker = id => {
         this.setState({
             stickers: [...this.state.stickers.filter(item => item.id !== id)]
@@ -35,7 +39,6 @@ class App extends Component {
     };
 
     editSticker = (id, key, value) => {
-        console.log(key, value);
         this.setState({
             stickers: this.state.stickers.map(sticker => {
                 if (sticker.id === id) {
@@ -54,6 +57,7 @@ class App extends Component {
                     <StickerList
                         removeSticker={this.removeSticker}
                         editSticker={this.editSticker}
+                        addSticker={this.addSticker}
                         stickers={this.state.stickers}
                     />
                 </main>

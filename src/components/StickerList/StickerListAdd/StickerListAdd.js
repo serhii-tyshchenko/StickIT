@@ -1,64 +1,58 @@
 import React, { Component } from 'react';
 import { GithubPicker } from 'react-color';
-export class StickerListItem extends Component {
+import uuid from 'uuid/v1';
+export default class StickerListAdd extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: this.props.sticker.title || 'Untitled',
-            text: this.props.sticker.text || 'Start typing...',
-            color: this.props.sticker.color || '#fff',
+            title: '',
+            text: '',
+            color: '#fff',
             showColorPicker: false
         };
     }
+    addSticker = () => {
+        const id = uuid();
+        const newSticker = {
+            id: id,
+            title: this.state.title,
+            text: this.state.text,
+            color: this.state.color
+        };
+        this.props.addSticker(newSticker);
+        this.setState({
+            title: '',
+            text: '',
+            color: '#fff',
+            showColorPicker: false
+        });
+    };
     handleChange = e => {
         const target = e.target;
         this.setState({ [target.name]: target.value });
     };
-
-    handleKeyDown = e => {
-        const id = this.props.sticker.id;
-        if (e.key === 'Enter') {
-            this.props.editSticker(id, 'title', this.state.title);
-        }
-    };
-    handleColorChange = color => {
-        const newColor = Object.values(color.hex).join('');
-        const id = this.props.sticker.id;
-        this.setState({ color: newColor });
-        this.props.editSticker(id, 'color', newColor);
-    };
     handleClick = () => {
         this.setState({ showColorPicker: !this.state.showColorPicker });
     };
-    handleBlur = e => {
-        const target = e.target;
-        const id = this.props.sticker.id;
-        this.props.editSticker(id, target.name, target.value);
-    };
-    handleClose = () => {
-        this.setState({ showColorPicker: false });
+    handleColorChange = color => {
+        const newColor = Object.values(color.hex).join('');
+        this.setState({ color: newColor });
     };
     render() {
-        const {
-            removeSticker,
-            sticker: { id }
-        } = this.props;
         const { title, text, color, showColorPicker } = this.state;
-
         return (
             <li
-                className="stickers__item sticker"
                 style={{ backgroundColor: color }}
+                className="stickers__item sticker"
             >
                 <div className="sticker__header">
                     <input
                         type="text"
-                        value={title}
                         name="title"
+                        placeholder="Enter title.."
                         className="sticker__title"
+                        value={title}
                         onChange={this.handleChange}
-                        onKeyDown={this.handleKeyDown}
-                        onBlur={this.handleBlur}
                     />
                     <div className="sticker__controls">
                         <button
@@ -74,20 +68,22 @@ export class StickerListItem extends Component {
                             ) : null}
                         </button>
                         <button
-                            onClick={removeSticker.bind(this, id)}
-                            title="Remove sticker"
-                            className="sticker__btn sticker__remove icon-trash-empty"
-                        ></button>
+                            title="Add sticker"
+                            className="sticker__btn sticker__add icon-add"
+                            onClick={this.addSticker}
+                        >
+                            +
+                        </button>
                     </div>
                 </div>
                 <div className="sticker__details">
                     <textarea
                         name="text"
-                        onChange={this.handleChange}
-                        onBlur={this.handleBlur}
                         className="sticker__text"
                         type="textarea"
+                        placeholder="Enter text..."
                         value={text}
+                        onChange={this.handleChange}
                     />
                 </div>
             </li>
