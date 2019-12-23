@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/serhii-tyshchenko/StickIT/static/css/main.66a1ba1f.chunk.css",
+    "main.js": "/serhii-tyshchenko/StickIT/static/js/main.55f68493.chunk.js",
+    "main.js.map": "/serhii-tyshchenko/StickIT/static/js/main.55f68493.chunk.js.map",
+    "runtime-main.js": "/serhii-tyshchenko/StickIT/static/js/runtime-main.6d792cc7.js",
+    "runtime-main.js.map": "/serhii-tyshchenko/StickIT/static/js/runtime-main.6d792cc7.js.map",
+    "static/js/2.9e2fa08f.chunk.js": "/serhii-tyshchenko/StickIT/static/js/2.9e2fa08f.chunk.js",
+    "static/js/2.9e2fa08f.chunk.js.map": "/serhii-tyshchenko/StickIT/static/js/2.9e2fa08f.chunk.js.map",
+    "index.html": "/serhii-tyshchenko/StickIT/index.html",
+    "precache-manifest.958544b1cb8505050fb447323b18e7fc.js": "/serhii-tyshchenko/StickIT/precache-manifest.958544b1cb8505050fb447323b18e7fc.js",
+    "service-worker.js": "/serhii-tyshchenko/StickIT/service-worker.js",
+    "static/css/main.66a1ba1f.chunk.css.map": "/serhii-tyshchenko/StickIT/static/css/main.66a1ba1f.chunk.css.map",
+    "static/js/2.9e2fa08f.chunk.js.LICENSE": "/serhii-tyshchenko/StickIT/static/js/2.9e2fa08f.chunk.js.LICENSE",
+    "static/media/fontello.css": "/serhii-tyshchenko/StickIT/static/media/fontello.e2744d93.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6d792cc7.js",
+    "static/js/2.9e2fa08f.chunk.js",
+    "static/css/main.66a1ba1f.chunk.css",
+    "static/js/main.55f68493.chunk.js"
+  ]
+}
