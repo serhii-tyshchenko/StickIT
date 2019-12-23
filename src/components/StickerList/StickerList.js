@@ -7,6 +7,7 @@ export const StickerList = props => {
     return (
         <div className="stickers">
             <ul className="stickers__list">
+                <StickerListAdd addSticker={addSticker} />
                 {stickers.map(item => (
                     <StickerListItem
                         sticker={item}
@@ -15,7 +16,6 @@ export const StickerList = props => {
                         removeSticker={removeSticker}
                     />
                 ))}
-                <StickerListAdd addSticker={addSticker} />
             </ul>
         </div>
     );

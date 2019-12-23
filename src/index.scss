@@ -15,7 +15,6 @@ body {
     min-height: 100vh;
 }
 .wrapper {
-    max-width: 1440px;
     margin: 0 auto;
     padding: 1rem;
 }
@@ -72,7 +71,6 @@ main {
 }
 
 .stickers {
-    padding: 0.5rem;
     &__list {
         display: flex;
         flex-wrap: wrap;
@@ -84,7 +82,7 @@ main {
 .sticker {
     width: 320px;
     height: 320px;
-    margin: 1rem 0.5rem;
+    margin: 1rem;
     border-radius: 3px;
     background: #fafbfc;
     box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05),
@@ -99,8 +97,8 @@ main {
     }
     &__header {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
         padding: 0.5rem;
         background-color: rgba(0, 0, 0, 0.1);
     }

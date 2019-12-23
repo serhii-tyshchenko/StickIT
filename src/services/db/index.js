@@ -1,6 +1,6 @@
 const getStateFromDB = () => {
     const intitalState = {
-        stickers: [{ id: '1', title: 'abba', text: 'asdfwafawfwf' }]
+        stickers: []
     };
     return localStorage.getItem('stickerList')
         ? JSON.parse(localStorage.getItem('stickerList'))

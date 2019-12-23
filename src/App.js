@@ -21,12 +21,6 @@ class App extends Component {
         db.saveStateToDB(this.state);
     }
 
-    addSticker = number => {
-        if (this.numberExists(this.state.stickers, number)) {
-            alert('sticker already added!');
-            return;
-        }
-    };
     addSticker = sticker => {
         this.setState({
             stickers: [...this.state.stickers, sticker]
