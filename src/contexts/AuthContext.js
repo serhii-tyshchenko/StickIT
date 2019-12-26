@@ -1,23 +1,14 @@
-import React, { createContext, Component } from 'react';
+import React from 'react';
+import { firebaseAuth } from '../reducers/authReducer';
 
-const AuthContext = createContext();
+export const Auth = React.createContext();
+const initialState = {
+  user: {}
+};
 
-class AuthContextProvider extends Component {
-  state = {
-    isAuthenticated: false
-  };
-  toggleAuth = () => {
-    this.setState({ isAuthenticated: !this.state.isAuthenticated });
-  };
-  render() {
-    return (
-      <AuthContext.Provider
-        value={{ ...this.state, toggleAuth: this.toggleAuth }}
-      >
-        {this.props.children}
-      </AuthContext.Provider>
-    );
-  }
-}
+export const AuthProvider = props => {
+  const [state, dispatch] = React.useReducer(firebaseAuth, initialState);
+  const value = { state, dispatch };
 
-export { AuthContext, AuthContextProvider };
+  return <Auth.Provider value={value}>{props.children}</Auth.Provider>;
+};

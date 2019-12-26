@@ -3,13 +3,12 @@ import { Header } from './components/Layout/Header';
 import { Footer } from './components/Layout/Footer';
 import { StickerList } from './components/StickerList';
 import * as db from '../src/services/db';
-import { ThemeContextProvider } from './contexts/ThemeContext';
-import { LangContextProvider } from './contexts/LangContext';
-
+import { ThemeContextProvider, LangContextProvider } from './contexts';
+import { AuthProvider } from './contexts/AuthContext';
 // import getDatafromAPI from '../src/services/api';
 
 import './App.scss';
-import './fontello/css/fontello.css';
+import './assets/fontello/css/fontello.css';
 
 class App extends Component {
   state = {
@@ -49,20 +48,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <LangContextProvider>
-          <ThemeContextProvider>
-            <Header />
-            <main className="wrapper">
-              <StickerList
-                removeSticker={this.removeSticker}
-                editSticker={this.editSticker}
-                addSticker={this.addSticker}
-                stickers={this.state.stickers}
-              />
-            </main>
-            <Footer />
-          </ThemeContextProvider>
-        </LangContextProvider>
+        <AuthProvider>
+          <LangContextProvider>
+            <ThemeContextProvider>
+              <Header />
+              <main className="wrapper">
+                <StickerList
+                  removeSticker={this.removeSticker}
+                  editSticker={this.editSticker}
+                  addSticker={this.addSticker}
+                  stickers={this.state.stickers}
+                />
+              </main>
+              <Footer />
+            </ThemeContextProvider>
+          </LangContextProvider>
+        </AuthProvider>
       </div>
     );
   }

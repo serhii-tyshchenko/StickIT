@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-import { ThemeContext } from '../../../contexts/ThemeContext';
-import { LangContext } from '../../../contexts/LangContext';
+import { ThemeContext, LangContext } from '../../../contexts';
 export const Header = () => {
   const { isLightTheme, light, dark, toggleTheme } = useContext(ThemeContext);
   const { toggleLanguage, language } = useContext(LangContext);
@@ -8,9 +7,9 @@ export const Header = () => {
   const toggleLang = e => {
     toggleLanguage(e.target.value);
   };
-
+  const headerStyle = { background: theme.background, color: theme.color };
   return (
-    <header style={{ background: theme.background, color: theme.color }}>
+    <header style={headerStyle}>
       <div className="wrapper header">
         <h2 className="header__logo">StickIt</h2>
         <button onClick={() => toggleTheme()}>
