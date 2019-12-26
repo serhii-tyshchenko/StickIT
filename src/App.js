@@ -4,6 +4,7 @@ import { Footer } from './components/Layout/Footer';
 import { StickerList } from './components/StickerList';
 import * as db from '../src/services/db';
 import { ThemeContextProvider } from './contexts/ThemeContext';
+import { LangContextProvider } from './contexts/LangContext';
 
 // import getDatafromAPI from '../src/services/api';
 
@@ -48,18 +49,20 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <ThemeContextProvider>
-          <Header />
-          <main className="wrapper">
-            <StickerList
-              removeSticker={this.removeSticker}
-              editSticker={this.editSticker}
-              addSticker={this.addSticker}
-              stickers={this.state.stickers}
-            />
-          </main>
-          <Footer />
-        </ThemeContextProvider>
+        <LangContextProvider>
+          <ThemeContextProvider>
+            <Header />
+            <main className="wrapper">
+              <StickerList
+                removeSticker={this.removeSticker}
+                editSticker={this.editSticker}
+                addSticker={this.addSticker}
+                stickers={this.state.stickers}
+              />
+            </main>
+            <Footer />
+          </ThemeContextProvider>
+        </LangContextProvider>
       </div>
     );
   }

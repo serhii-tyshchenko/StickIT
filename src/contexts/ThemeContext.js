@@ -4,7 +4,9 @@ const ThemeContext = createContext();
 
 class ThemeContextProvider extends Component {
   state = {
-    isLightTheme: true
+    isLightTheme: true,
+    dark: { background: '#052b3c', color: '#fff' },
+    light: { background: '#fff', color: '#052b3c' }
   };
   toggleTheme = () => {
     this.setState({ isLightTheme: !this.state.isLightTheme });
