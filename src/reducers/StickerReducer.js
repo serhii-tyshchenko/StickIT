@@ -3,12 +3,28 @@ const stickerReducer = (state, action) => {
     case 'ADD_STICKER':
       return {
         ...state,
-        stickers: [...state.stickers, action.payload]
+        stickers: [action.payload, ...state.stickers]
+      };
+    case 'EDIT_STICKER':
+      const { id, name, value } = action.payload;
+      return {
+        ...state,
+        stickers: state.stickers.map(sticker => {
+          if (sticker.id === id) {
+            sticker[name] = value;
+          }
+          return sticker;
+        })
       };
     case 'REMOVE_STICKER':
       return {
         ...state,
-        stickers: state.stickers.filter(item => item.id !== action.payload)
+        stickers: state.stickers.filter(item => item.id !== action.payload.id)
+      };
+    case 'TOGGLE_THEME':
+      return {
+        ...state,
+        theme: { ...state.theme, isLightTheme: !state.theme.isLightTheme }
       };
     default:
       return state;
