@@ -1,36 +1,26 @@
 import React, { useState, useContext } from 'react';
 import { GithubPicker } from 'react-color';
 import { StoreContext } from '../../../contexts';
-
+import { EDIT_STICKER, REMOVE_STICKER } from '../../../reducers/action-types';
 export const StickerListItem = ({ sticker }) => {
   const { dispatch } = useContext(StoreContext);
-
   const initialState = {
     ...sticker,
     showColorPicker: false
   };
   const [state, setState] = useState(initialState);
-  const { id, title, text, color, showColorPicker } = state;
-
+  let { id, title, text, color, isPinned, showColorPicker } = state;
   const handleChange = e => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
   };
-
   const handleBlur = e => {
     const { name, value } = e.target;
-    dispatch({
-      type: 'EDIT_STICKER',
-      payload: {
-        id,
-        name,
-        value
-      }
-    });
+    handleEdit(name, value);
   };
   const handleRemoveClick = e => {
     dispatch({
-      type: 'REMOVE_STICKER',
+      type: REMOVE_STICKER,
       payload: {
         id
       }
@@ -41,14 +31,25 @@ export const StickerListItem = ({ sticker }) => {
   };
   const handleColorChange = color => {
     setState({ ...state, color: color.hex });
+    handleEdit('color', color.hex);
+  };
+  const handlePinClick = () => {
+    isPinned = !isPinned;
+    setState({ ...state, isPinned: isPinned });
+    handleEdit('isPinned', isPinned);
+  };
+  const handleEdit = (name, value) => {
     dispatch({
-      type: 'EDIT_STICKER',
+      type: EDIT_STICKER,
       payload: {
         id,
-        name: 'color',
-        value: color.hex
+        name,
+        value
       }
     });
+  };
+  const setPinClass = () => {
+    return isPinned ? 'sticker__btn icon-pin' : 'sticker__btn icon-pin-outline';
   };
   return (
     <li className="stickers__item sticker" style={{ backgroundColor: color }}>
@@ -71,9 +72,10 @@ export const StickerListItem = ({ sticker }) => {
               <GithubPicker color={color} onChange={handleColorChange} />
             ) : null}
           </button>
+          <button onClick={handlePinClick} className={setPinClass()}></button>
           <button
             onClick={handleRemoveClick}
-            className="sticker__btn sticker__remove icon-trash-empty"
+            className="sticker__btn icon-trash-empty"
           ></button>
         </div>
       </div>
