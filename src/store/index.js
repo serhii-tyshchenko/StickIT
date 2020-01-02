@@ -16,12 +16,15 @@ const initialState = {
 const StoreProvider = props => {
   const [state, dispatch] = useReducer(
     rootReducer,
-    initialState,
-    () => JSON.parse(localStorage.getItem('StickIt')) || initialState
+    initialState
+    // () => JSON.parse(localStorage.getItem('StickIt')) || initialState
+    // initialState
   );
-  useEffect(() => localStorage.setItem('StickIt', JSON.stringify(state)), [
-    state
-  ]);
+  useEffect(() => {
+    // localStorage.setItem('StickIt', JSON.stringify(state));
+    console.log(state);
+  }, [state]);
+
   return (
     <Store.Provider value={{ ...state, dispatch }}>
       {props.children}

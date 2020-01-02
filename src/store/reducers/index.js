@@ -5,15 +5,23 @@ import {
   TOGGLE_THEME,
   SIGN_IN
 } from '../action-types';
+import uuid from 'uuid/v1';
 import db from '../../services/db/firebase';
 
 const rootReducer = (state, action) => {
   switch (action.type) {
     case ADD_STICKER:
-      db.addSticker(state.user.uid, action.payload);
+      const newSticker = {
+        id: uuid(),
+        title: '',
+        text: '',
+        color: '#fff',
+        isPinned: false
+      };
+      db.addSticker(state.user.uid, newSticker);
       return {
         ...state,
-        stickers: [action.payload, ...state.stickers]
+        stickers: [newSticker, ...state.stickers]
       };
     case EDIT_STICKER:
       const { id, name, value } = action.payload;
@@ -39,7 +47,11 @@ const rootReducer = (state, action) => {
         theme: { ...state.theme, isLightTheme: !state.theme.isLightTheme }
       };
     case SIGN_IN:
-      return { ...state, user: action.payload };
+      return {
+        ...state,
+        user: action.payload.user,
+        stickers: action.payload.stickers
+      };
     default:
       return state;
   }

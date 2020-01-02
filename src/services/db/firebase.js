@@ -13,6 +13,8 @@ const firebaseConfig = {
   appId: '1:210064489150:web:4a80f6691650254d5bfcef',
   measurementId: 'G-1WR7GSB1SH'
 };
+var provider = new firebase.auth.GoogleAuthProvider();
+
 class Firebase {
   constructor() {
     firebase.initializeApp(firebaseConfig);
@@ -20,7 +22,6 @@ class Firebase {
     this.db = firebase.firestore();
     this.storage = firebase.storage();
   }
-
   //login
   async login(email, password) {
     const user = await firebase
@@ -32,7 +33,22 @@ class Firebase {
       });
     return user;
   }
-
+  async googleSignin() {
+    const user = await firebase
+      .auth()
+      .signInWithPopup(provider)
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        console.log(error);
+      });
+    return user;
+  }
   //signin
   async signin(email, password) {
     const user = await firebase
@@ -109,17 +125,17 @@ class Firebase {
   //   });
   // }
 
-  // async getPosts() {
-  //   let postsArray = [];
-  //   const posts = await firebase
-  //     .firestore()
-  //     .collection('Posts')
-  //     .get();
-  //   posts.forEach(doc => {
-  //     postsArray.push({ id: doc.id, data: doc.data() });
-  //   });
-  //   return postsArray;
-  // }
+  async getStickers(userID) {
+    const data = [];
+    const posts = await firebase
+      .firestore()
+      .collection('data')
+      .doc(userID)
+      .collection('stickers')
+      .get();
+    posts.forEach(item => data.push(item.data()));
+    return data;
+  }
 
   // async getPost(postid) {
   //   const post = await firebase
