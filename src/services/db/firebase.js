@@ -85,86 +85,48 @@ class Firebase {
     return postData;
   }
 
-  async createPost(url, post) {
-    const fileRef = await firebase.storage().refFromURL(url);
-
-    let newPost = {
-      title: post.title,
-      content: post.content,
-      cover: url,
-      fileref: fileRef.location.path
-    };
-
+  async addSticker(userId, sticker) {
     const firestorePost = await firebase
       .firestore()
-      .collection('Posts')
-      .add(newPost)
+      .collection('data')
+      .doc(userId)
+      .collection('stickers')
+      .doc(sticker.id)
+      .set(sticker)
       .catch(err => {
         console.log(err);
       });
-
+    console.log('Sticker Added');
     return firestorePost;
   }
 
-  async updatePost(url, postid, postData) {
-    if (postData['cover']) {
-      const fileRef = await firebase.storage().refFromURL(url);
-
-      await this.storage
-        .ref()
-        .child(postData['oldcover'])
-        .delete()
-        .catch(err => {
-          console.log(err);
-        });
-
-      let updatedPost = {
-        title: postData.title,
-        content: postData.content,
-        cover: url,
-        fileref: fileRef.location.path
-      };
-
-      const post = await firebase
-        .firestore()
-        .collection('Posts')
-        .doc(postid)
-        .set(updatedPost, { merge: true })
-        .catch(err => {
-          console.log(err);
-        });
-      return post;
-    } else {
-      const post = await firebase
-        .firestore()
-        .collection('Posts')
-        .doc(postid)
-        .set(postData, { merge: true })
-        .catch(err => {
-          console.log(err);
-        });
-      return post;
-    }
-  }
-
-  async deletePost(postid, fileref) {
-    const storageRef = firebase.storage().ref();
-    await storageRef
-      .child(fileref)
-      .delete()
-      .catch(err => {
-        console.log(err);
-      });
-    console.log('Image Deleted');
+  async editSticker(userID, sticker) {
     const post = await firebase
       .firestore()
-      .collection('Posts')
-      .doc(postid)
+      .collection('data')
+      .doc(userID)
+      .collection('stickers')
+      .doc(sticker.id)
+      .set(sticker, { merge: true })
+      .catch(err => {
+        console.log(err);
+      });
+    console.log('Sticker Updated');
+    return post;
+  }
+
+  async deleteSticker(userId, id) {
+    const post = await firebase
+      .firestore()
+      .collection('data')
+      .doc(userId)
+      .collection('stickers')
+      .doc(id)
       .delete()
       .catch(err => {
         console.log(err);
       });
-    console.log('Post Deleted');
+    console.log('Sticker Deleted');
 
     return post;
   }
