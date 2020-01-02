@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { GithubPicker } from 'react-color';
-import { StoreContext } from '../../../contexts';
-import { EDIT_STICKER, REMOVE_STICKER } from '../../../reducers/action-types';
+import { Store } from '../../../store';
+import { EDIT_STICKER, REMOVE_STICKER } from '../../../store/action-types';
+
 export const StickerListItem = ({ sticker }) => {
-  const { dispatch } = useContext(StoreContext);
+  const { dispatch } = useContext(Store);
   const initialState = {
     ...sticker,
     showColorPicker: false
@@ -69,7 +70,9 @@ export const StickerListItem = ({ sticker }) => {
             onClick={handleColorClick}
           >
             {showColorPicker ? (
-              <GithubPicker color={color} onChange={handleColorChange} />
+              <div style={{ position: 'absolute', top: '150%', left: '0' }}>
+                <GithubPicker color={color} onChange={handleColorChange} />
+              </div>
             ) : null}
           </button>
           <button onClick={handlePinClick} className={setPinClass()}></button>

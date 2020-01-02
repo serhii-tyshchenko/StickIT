@@ -57,39 +57,11 @@ class Firebase {
     return logout;
   }
 
-  async getUserState() {
-    return new Promise(resolve => {
-      this.auth.onAuthStateChanged(resolve);
-    });
-  }
-
-  async getPosts() {
-    let postsArray = [];
-    const posts = await firebase
-      .firestore()
-      .collection('Posts')
-      .get();
-    posts.forEach(doc => {
-      postsArray.push({ id: doc.id, data: doc.data() });
-    });
-    return postsArray;
-  }
-
-  async getPost(postid) {
+  async addSticker(userID, sticker) {
     const post = await firebase
       .firestore()
-      .collection('Posts')
-      .doc(postid)
-      .get();
-    const postData = post.data();
-    return postData;
-  }
-
-  async addSticker(userId, sticker) {
-    const firestorePost = await firebase
-      .firestore()
       .collection('data')
-      .doc(userId)
+      .doc(userID)
       .collection('stickers')
       .doc(sticker.id)
       .set(sticker)
@@ -97,7 +69,7 @@ class Firebase {
         console.log(err);
       });
     console.log('Sticker Added');
-    return firestorePost;
+    return post;
   }
 
   async editSticker(userID, sticker) {
@@ -115,11 +87,11 @@ class Firebase {
     return post;
   }
 
-  async deleteSticker(userId, id) {
+  async deleteSticker(userID, id) {
     const post = await firebase
       .firestore()
       .collection('data')
-      .doc(userId)
+      .doc(userID)
       .collection('stickers')
       .doc(id)
       .delete()
@@ -130,6 +102,34 @@ class Firebase {
 
     return post;
   }
+
+  // async getUserState() {
+  //   return new Promise(resolve => {
+  //     this.auth.onAuthStateChanged(resolve);
+  //   });
+  // }
+
+  // async getPosts() {
+  //   let postsArray = [];
+  //   const posts = await firebase
+  //     .firestore()
+  //     .collection('Posts')
+  //     .get();
+  //   posts.forEach(doc => {
+  //     postsArray.push({ id: doc.id, data: doc.data() });
+  //   });
+  //   return postsArray;
+  // }
+
+  // async getPost(postid) {
+  //   const post = await firebase
+  //     .firestore()
+  //     .collection('Posts')
+  //     .doc(postid)
+  //     .get();
+  //   const postData = post.data();
+  //   return postData;
+  // }
 }
 
 export default new Firebase();

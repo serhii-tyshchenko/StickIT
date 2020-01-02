@@ -2,11 +2,10 @@ import React, { useContext } from 'react';
 
 import { StickerListItem } from './StickerListItem';
 import StickerListAdd from './StickerListAdd/StickerListAdd';
-import { StoreContext } from '../../contexts';
+import { Store } from '../../store';
 
-export const StickerList = props => {
-  // const { stickers, editSticker, removeSticker, addSticker } = props;
-  const { stickers } = useContext(StoreContext);
+export const StickerList = () => {
+  const { stickers } = useContext(Store);
   return (
     <div className="stickers">
       <ul className="stickers__list">

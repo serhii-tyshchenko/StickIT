@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import uuid from 'uuid/v1';
-import { StoreContext } from '../../../contexts';
-import { ADD_STICKER } from '../../../reducers/action-types';
+import { Store } from '../../../store';
+import { ADD_STICKER } from '../../../store/action-types';
+
 const StickerListAdd = () => {
-  const { user, dispatch } = useContext(StoreContext);
+  const { dispatch } = useContext(Store);
   const handleClick = () => {
     dispatch({
       type: ADD_STICKER,

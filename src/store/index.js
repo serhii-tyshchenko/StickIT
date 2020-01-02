@@ -1,8 +1,7 @@
 import React, { createContext, useReducer, useEffect } from 'react';
-import { stickerReducer } from '../reducers/StickerReducer';
-// import * as db from '../src/services/db';
+import { rootReducer } from './reducers';
 
-const StoreContext = createContext();
+const Store = createContext();
 const initialState = {
   theme: {
     isLightTheme: false,
@@ -14,9 +13,9 @@ const initialState = {
   },
   stickers: []
 };
-const StoreContextProvider = props => {
+const StoreProvider = props => {
   const [state, dispatch] = useReducer(
-    stickerReducer,
+    rootReducer,
     initialState,
     () => JSON.parse(localStorage.getItem('StickIt')) || initialState
   );
@@ -24,10 +23,10 @@ const StoreContextProvider = props => {
     state
   ]);
   return (
-    <StoreContext.Provider value={{ ...state, dispatch }}>
+    <Store.Provider value={{ ...state, dispatch }}>
       {props.children}
-    </StoreContext.Provider>
+    </Store.Provider>
   );
 };
 
-export { StoreContext, StoreContextProvider };
+export { Store, StoreProvider };

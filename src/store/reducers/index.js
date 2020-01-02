@@ -4,10 +4,10 @@ import {
   REMOVE_STICKER,
   TOGGLE_THEME,
   SIGN_IN
-} from './action-types';
-import db from '../services/db/firebase';
+} from '../action-types';
+import db from '../../services/db/firebase';
 
-const stickerReducer = (state, action) => {
+const rootReducer = (state, action) => {
   switch (action.type) {
     case ADD_STICKER:
       db.addSticker(state.user.uid, action.payload);
@@ -45,4 +45,4 @@ const stickerReducer = (state, action) => {
   }
 };
 
-export { stickerReducer };
+export { rootReducer };

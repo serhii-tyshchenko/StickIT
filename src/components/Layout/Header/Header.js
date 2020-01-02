@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { StoreContext } from '../../../contexts';
-import { TOGGLE_THEME, SIGN_IN } from '../../../reducers/action-types';
+import { Store } from '../../../store';
+import { TOGGLE_THEME, SIGN_IN } from '../../../store/action-types';
 import db from '../../../services/db/firebase';
 const Header = () => {
-  const { user, theme, dispatch } = useContext(StoreContext);
+  const { user, theme, dispatch } = useContext(Store);
   const { isLightTheme, light, dark } = theme;
   const headerStyle = isLightTheme ? light : dark;
 

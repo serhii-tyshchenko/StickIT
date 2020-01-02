@@ -2,20 +2,20 @@ import React from 'react';
 import { Header } from './components/Layout/Header';
 import { Footer } from './components/Layout/Footer';
 import { StickerList } from './components/StickerList';
-import { StoreContextProvider } from './contexts';
+import { StoreProvider } from './store';
 
 import './App.scss';
 import './assets/fontello/css/fontello.css';
 
 const App = () => (
   <div className="App">
-    <StoreContextProvider>
+    <StoreProvider>
       <Header />
       <main className="wrapper">
         <StickerList />
       </main>
       <Footer />
-    </StoreContextProvider>
+    </StoreProvider>
   </div>
 );
 
