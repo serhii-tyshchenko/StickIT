@@ -16,13 +16,13 @@ const initialState = {
 const StoreProvider = props => {
   const [state, dispatch] = useReducer(
     rootReducer,
-    initialState
-    // () => JSON.parse(localStorage.getItem('StickIt')) || initialState
+    initialState,
+    () => JSON.parse(localStorage.getItem('StickIt')) || initialState
     // initialState
+    // TODO save user to LS
   );
   useEffect(() => {
-    // localStorage.setItem('StickIt', JSON.stringify(state));
-    console.log(state);
+    localStorage.setItem('StickIt', JSON.stringify(state));
   }, [state]);
 
   return (

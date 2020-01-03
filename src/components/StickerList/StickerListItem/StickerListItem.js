@@ -1,16 +1,20 @@
 import React, { useState, useContext } from 'react';
 import { GithubPicker } from 'react-color';
 import { Store } from '../../../store';
-import { EDIT_STICKER, REMOVE_STICKER } from '../../../store/action-types';
+import { removeSticker, editSticker } from '../../../store/actions';
+import './StickerListItem.scss';
 
-export const StickerListItem = ({ sticker }) => {
-  const { dispatch } = useContext(Store);
+const StickerListItem = ({ sticker }) => {
+  const { user, dispatch } = useContext(Store);
+  const { id, color, isPinned } = sticker;
   const initialState = {
-    ...sticker,
+    title: sticker.title,
+    text: sticker.text,
     showColorPicker: false
   };
   const [state, setState] = useState(initialState);
-  let { id, title, text, color, isPinned, showColorPicker } = state;
+  const { title, text, showColorPicker } = state;
+
   const handleChange = e => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
@@ -19,47 +23,32 @@ export const StickerListItem = ({ sticker }) => {
     const { name, value } = e.target;
     handleEdit(name, value);
   };
-  const handleRemoveClick = e => {
-    dispatch({
-      type: REMOVE_STICKER,
-      payload: {
-        id
-      }
-    });
+  const handleRemoveClick = () => {
+    removeSticker(dispatch, user.uid, id);
   };
   const handleColorClick = () => {
     setState({ ...state, showColorPicker: !showColorPicker });
   };
   const handleColorChange = color => {
-    setState({ ...state, color: color.hex });
     handleEdit('color', color.hex);
   };
   const handlePinClick = () => {
-    isPinned = !isPinned;
-    setState({ ...state, isPinned: isPinned });
-    handleEdit('isPinned', isPinned);
+    handleEdit('isPinned', !isPinned);
   };
-  const handleEdit = (name, value) => {
-    dispatch({
-      type: EDIT_STICKER,
-      payload: {
-        id,
-        name,
-        value
-      }
-    });
+  const handleEdit = (key, value) => {
+    editSticker(dispatch, user.uid, id, key, value);
   };
-  const setPinClass = () => {
-    return isPinned ? 'sticker__btn icon-pin' : 'sticker__btn icon-pin-outline';
-  };
+  const pinButtonClass = isPinned
+    ? 'sticker__btn icon-pin'
+    : 'sticker__btn icon-pin-outline';
   return (
     <li className="stickers__item sticker" style={{ backgroundColor: color }}>
       <div className="sticker__header">
         <input
+          className="sticker__title"
           type="text"
           value={title}
           name="title"
-          className="sticker__title"
           onChange={handleChange}
           onBlur={handleBlur}
           placeholder="Enter title..."
@@ -75,19 +64,19 @@ export const StickerListItem = ({ sticker }) => {
               </div>
             ) : null}
           </button>
-          <button onClick={handlePinClick} className={setPinClass()}></button>
+          <button className={pinButtonClass} onClick={handlePinClick} />
           <button
-            onClick={handleRemoveClick}
             className="sticker__btn icon-trash-empty"
-          ></button>
+            onClick={handleRemoveClick}
+          />
         </div>
       </div>
       <div className="sticker__details">
         <textarea
+          className="sticker__text"
           name="text"
           onChange={handleChange}
           onBlur={handleBlur}
-          className="sticker__text"
           type="textarea"
           value={text}
           placeholder="Enter text..."
@@ -96,3 +85,5 @@ export const StickerListItem = ({ sticker }) => {
     </li>
   );
 };
+
+export { StickerListItem };

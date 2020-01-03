@@ -1,0 +1,34 @@
+header {
+  background: #052b3c;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  &__logo {
+    font-size: 2rem;
+  }
+  &__menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    &__btn {
+      color: inherit;
+      font-size: 2rem;
+      opacity: 0.8;
+      transition: opacity 300ms ease-in;
+      &--login {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

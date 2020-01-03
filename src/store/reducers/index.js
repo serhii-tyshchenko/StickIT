@@ -23,35 +23,38 @@ const rootReducer = (state, action) => {
         ...state,
         stickers: [newSticker, ...state.stickers]
       };
+
     case EDIT_STICKER:
-      const { id, name, value } = action.payload;
-      db.editSticker(state.user.uid, { id: id, [name]: value });
+      const { id, key, value } = action.payload;
       return {
         ...state,
         stickers: state.stickers.map(sticker => {
           if (sticker.id === id) {
-            sticker[name] = value;
+            sticker[key] = value;
           }
           return sticker;
         })
       };
+
     case REMOVE_STICKER:
-      db.deleteSticker(state.user.uid, action.payload.id);
       return {
         ...state,
-        stickers: state.stickers.filter(item => item.id !== action.payload.id)
+        stickers: state.stickers.filter(item => item.id !== action.payload)
       };
+
     case TOGGLE_THEME:
       return {
         ...state,
         theme: { ...state.theme, isLightTheme: !state.theme.isLightTheme }
       };
+
     case SIGN_IN:
       return {
         ...state,
-        user: action.payload.user,
+        user: { ...action.payload.user, isLogged: true },
         stickers: action.payload.stickers
       };
+
     default:
       return state;
   }

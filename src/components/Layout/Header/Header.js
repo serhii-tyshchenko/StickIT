@@ -1,12 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Store } from '../../../store';
-import {
-  TOGGLE_THEME,
-  ADD_STICKER,
-  SIGN_IN
-} from '../../../store/action-types';
+import { addSticker, toggleTheme } from '../../../store/actions';
+import { SIGN_IN } from '../../../store/action-types';
 import db from '../../../services/db/firebase';
-
+import './Header.scss';
 import { LogInForm } from '../../LogInForm';
 
 const Header = () => {
@@ -18,8 +15,8 @@ const Header = () => {
     classField: 'header__menu__btn icon-user'
   });
 
-  const toggleTheme = () => {
-    dispatch({ type: TOGGLE_THEME });
+  const handleToggleTheme = () => {
+    dispatch(toggleTheme());
   };
 
   const handleSignIn = async () => {
@@ -36,7 +33,7 @@ const Header = () => {
     });
   };
   const AddSticker = () => {
-    dispatch({ type: ADD_STICKER });
+    dispatch(addSticker());
   };
   const themeIconClass = isLightTheme
     ? 'header__menu__btn icon-moon'
@@ -54,7 +51,7 @@ const Header = () => {
             />
             <button
               className={themeIconClass}
-              onClick={toggleTheme}
+              onClick={handleToggleTheme}
               title={isLightTheme ? 'Dark' : 'Light'}
             />
             <button
@@ -63,28 +60,6 @@ const Header = () => {
               style={{ backgroundImage: `url(${state.photoURL})` }}
             />
           </div>
-          {/* <div>
-          <label>
-            EN
-            <input
-              type="radio"
-              onChange={toggleLang}
-              name="language"
-              value="en"
-              checked={language === 'en'}
-            />
-          </label>
-          <label>
-            UA
-            <input
-              type="radio"
-              onChange={toggleLang}
-              name="language"
-              value="ua"
-              checked={language === 'ua'}
-            />
-          </label>
-        </div> */}
         </div>
       </header>
       {/* <LogInForm isVisible={state.showModal} handleClose={handleSignIn} /> */}
