@@ -5,23 +5,13 @@ import {
   TOGGLE_THEME,
   SIGN_IN
 } from '../action-types';
-import uuid from 'uuid/v1';
-import db from '../../services/db/firebase';
 
 const rootReducer = (state, action) => {
   switch (action.type) {
     case ADD_STICKER:
-      const newSticker = {
-        id: uuid(),
-        title: '',
-        text: '',
-        color: '#fff',
-        isPinned: false
-      };
-      db.addSticker(state.user.uid, newSticker);
       return {
         ...state,
-        stickers: [newSticker, ...state.stickers]
+        stickers: [action.payload, ...state.stickers]
       };
 
     case EDIT_STICKER:

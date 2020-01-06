@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { GithubPicker } from 'react-color';
+import { ColorPicker } from '../../ColorPicker';
 import { Store } from '../../../store';
 import { removeSticker, editSticker } from '../../../store/actions';
 import './StickerListItem.scss';
@@ -59,9 +59,10 @@ const StickerListItem = ({ sticker }) => {
             onClick={handleColorClick}
           >
             {showColorPicker ? (
-              <div style={{ position: 'absolute', top: '150%', left: '0' }}>
-                <GithubPicker color={color} onChange={handleColorChange} />
-              </div>
+              <ColorPicker
+                color={color}
+                handleColorChange={handleColorChange}
+              />
             ) : null}
           </button>
           <button className={pinButtonClass} onClick={handlePinClick} />

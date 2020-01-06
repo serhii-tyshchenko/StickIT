@@ -38,17 +38,11 @@ class Firebase {
       .auth()
       .signInWithPopup(provider)
       .catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
         console.log(error);
       });
     return user;
   }
+
   //signin
   async signin(email, password) {
     const user = await firebase
@@ -124,6 +118,30 @@ class Firebase {
   //     this.auth.onAuthStateChanged(resolve);
   //   });
   // }
+  async updateSettings(userID, parameter) {
+    console.log(userID, parameter);
+    const settings = await firebase
+      .firestore()
+      .collection('data')
+      .doc(userID)
+      .set(parameter, { merge: true })
+      .catch(err => console.log(err));
+    console.log('Settings Updated');
+    return settings;
+  }
+  async getSettings(userID) {
+    const settings = await firebase
+      .firestore()
+      .collection('data')
+      .doc(userID)
+      .doc('settings')
+      .get()
+      .catch(err => {
+        console.log(err);
+      });
+    console.log(settings);
+    return settings;
+  }
 
   async getStickers(userID) {
     const data = [];
@@ -136,16 +154,6 @@ class Firebase {
     posts.forEach(item => data.push(item.data()));
     return data;
   }
-
-  // async getPost(postid) {
-  //   const post = await firebase
-  //     .firestore()
-  //     .collection('Posts')
-  //     .doc(postid)
-  //     .get();
-  //   const postData = post.data();
-  //   return postData;
-  // }
 }
 
 export default new Firebase();

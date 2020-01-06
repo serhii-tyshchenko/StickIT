@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
+import { LogInForm } from '../../LogInForm';
 import { Store } from '../../../store';
 import { addSticker, toggleTheme } from '../../../store/actions';
 import { SIGN_IN } from '../../../store/action-types';
 import db from '../../../services/db/firebase';
+
 import './Header.scss';
-import { LogInForm } from '../../LogInForm';
 
 const Header = () => {
   const { user, theme, dispatch } = useContext(Store);
@@ -16,7 +17,7 @@ const Header = () => {
   });
 
   const handleToggleTheme = () => {
-    dispatch(toggleTheme());
+    toggleTheme(dispatch, user.uid, isLightTheme);
   };
 
   const handleSignIn = async () => {
@@ -33,7 +34,7 @@ const Header = () => {
     });
   };
   const AddSticker = () => {
-    dispatch(addSticker());
+    addSticker(dispatch, user.uid);
   };
   const themeIconClass = isLightTheme
     ? 'header__menu__btn icon-moon'
