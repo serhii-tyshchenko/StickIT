@@ -1,33 +1,22 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import './LogInForm.scss';
-import { Store } from '../../store';
-import { SIGN_IN } from '../../store/action-types';
-import db from '../../services/db';
 
-const LogInForm = ({ isVisible, handleClose }) => {
+const LogInForm = ({
+  isVisible,
+  handleClose,
+  handleSignInWithEmail,
+  handleSignInWithGoogle
+}) => {
   const initialState = { email: '', password: '' };
   const [state, setState] = useState(initialState);
-  const { dispatch } = useContext(Store);
 
   const handleChange = e => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
   };
-
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    const response = await db.login(state.email, state.password);
-    if (response.hasOwnProperty('message')) {
-      console.log(response.message);
-    } else {
-      handleClose();
-      const { uid, email } = response.user;
-      const stickers = await db.getStickers(uid);
-      return dispatch({
-        type: SIGN_IN,
-        payload: { user: { uid, email }, stickers: stickers }
-      });
-    }
+    handleSignInWithEmail(state.email, state.password);
   };
 
   return (
@@ -60,6 +49,8 @@ const LogInForm = ({ isVisible, handleClose }) => {
               />
               <button className="login-form__btn">Submit</button>
             </form>
+            <hr />
+            <button onClick={handleSignInWithGoogle}>Google</button>
           </div>
         </div>
       </div>

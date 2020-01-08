@@ -4,8 +4,9 @@ import { Store } from '../../../store';
 import {
   addSticker,
   toggleTheme,
-  signInGoogle,
-  signOut
+  signInWithEmail,
+  signOut,
+  signInWithGoogle
 } from '../../../store/actions';
 
 import './Header.scss';
@@ -16,25 +17,33 @@ const Header = () => {
   const { isLightTheme, light, dark } = theme;
   const headerStyle = isLightTheme ? light : dark;
   const [state, setState] = useState({
-    showLoginForm: false
+    showLogInForm: false
   });
 
   const handleToggleTheme = () => {
     toggleTheme(dispatch, uid, isLightTheme);
   };
 
-  const handleSignInClick = () => {
+  const handleSignIn = () => {
     if (user.isLogged) {
       signOut(dispatch);
     } else {
-      signInGoogle(dispatch);
+      setState({ ...state, showLogInForm: !state.showLogInForm });
     }
+  };
+  const handleSignInWithEmail = async (email, password) => {
+    await signInWithEmail(dispatch, email, password);
+    setState({ ...state, showLogInForm: !state.showLogInForm });
+  };
+  const handleSignInWithGoogle = async () => {
+    await signInWithGoogle(dispatch);
+    setState({ ...state, showLogInForm: !state.showLogInForm });
   };
   const AddSticker = () => {
     addSticker(dispatch, uid);
   };
-  const toggleModal = () => {
-    setState({ ...state, showLoginForm: !state.showLoginForm });
+  const toggleLogInForm = () => {
+    setState({ ...state, showLogInForm: !state.showLogInForm });
   };
   const themeIconClass = isLightTheme
     ? 'header__menu__btn icon-moon'
@@ -60,13 +69,21 @@ const Header = () => {
             />
             <button
               className={userIconClass}
-              onClick={handleSignInClick}
-              style={{ backgroundImage: `url(${photoURL})` }}
+              // onClick={handleSignIn}
+              onClick={handleSignIn}
+              style={{
+                backgroundImage: `url(${photoURL})`
+              }}
             />
           </div>
         </div>
       </header>
-      {/* <LogInForm isVisible={state.showModal} handleClose={toggleModal} /> */}
+      <LogInForm
+        isVisible={state.showLogInForm}
+        handleSignInWithEmail={handleSignInWithEmail}
+        handleSignInWithGoogle={handleSignInWithGoogle}
+        handleClose={toggleLogInForm}
+      />
     </>
   );
 };

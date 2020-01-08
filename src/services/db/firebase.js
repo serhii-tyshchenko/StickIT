@@ -22,37 +22,26 @@ class Firebase {
     this.db = firebase.firestore();
     this.storage = firebase.storage();
   }
-  //login
-  async login(email, password) {
+  async signInWithEmail(email, password) {
     const user = await firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .catch(err => {
-        console.log(err);
-        return err;
-      });
+      .catch(error => console.log(error));
     return user;
   }
-  //signinWithPopup
-  async googleSignin() {
+  async signInWithGoogle() {
     const user = await firebase
       .auth()
       .signInWithPopup(provider)
-      .catch(function(error) {
-        console.log(error);
-      });
+      .catch(error => console.log(error));
     return user;
   }
 
-  //signin
-  async signin(email, password) {
+  async signUp(email, password) {
     const user = await firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .catch(err => {
-        console.log(err);
-        return err;
-      });
+      .catch(error => console.log(error));
     return user;
   }
 
@@ -61,10 +50,7 @@ class Firebase {
     const logout = await firebase
       .auth()
       .signOut()
-      .catch(err => {
-        console.log(err);
-        return err;
-      });
+      .catch(error => console.log(error));
     return logout;
   }
 
@@ -76,9 +62,7 @@ class Firebase {
       .collection('stickers')
       .doc(sticker.id)
       .set(sticker)
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(error => console.log(error));
     console.log('Sticker Added');
     return post;
   }
@@ -91,9 +75,7 @@ class Firebase {
       .collection('stickers')
       .doc(sticker.id)
       .set(sticker, { merge: true })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(error => console.log(error));
     console.log('Sticker Updated');
     return post;
   }
@@ -106,9 +88,7 @@ class Firebase {
       .collection('stickers')
       .doc(id)
       .delete()
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(error => console.log(error));
     console.log('Sticker Deleted');
 
     return post;
@@ -127,7 +107,7 @@ class Firebase {
       .collection('settings')
       .doc('common')
       .set(parameter, { merge: true })
-      .catch(err => console.log(err));
+      .catch(error => console.log(error));
     console.log('Settings Updated');
     return settings;
   }
@@ -139,9 +119,7 @@ class Firebase {
       .collection('settings')
       .doc('common')
       .get()
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(error => console.log(error));
     return settings.data();
   }
 
@@ -152,7 +130,8 @@ class Firebase {
       .collection('data')
       .doc(userID)
       .collection('stickers')
-      .get();
+      .get()
+      .catch(error => console.log(error));
     posts.forEach(item => data.push(item.data()));
     return data;
   }
