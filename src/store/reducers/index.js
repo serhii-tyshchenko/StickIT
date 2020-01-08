@@ -3,7 +3,8 @@ import {
   EDIT_STICKER,
   REMOVE_STICKER,
   TOGGLE_THEME,
-  SIGN_IN
+  SIGN_IN,
+  SIGN_OUT
 } from '../action-types';
 
 const rootReducer = (state, action) => {
@@ -35,15 +36,22 @@ const rootReducer = (state, action) => {
     case TOGGLE_THEME:
       return {
         ...state,
-        theme: { ...state.theme, isLightTheme: !state.theme.isLightTheme }
+        theme: { ...state.theme, isLightTheme: !action.payload }
       };
 
     case SIGN_IN:
+      const { user, stickers, settings } = action.payload;
+      const { isLightTheme, language } = settings;
       return {
         ...state,
-        user: { ...action.payload.user, isLogged: true },
-        stickers: action.payload.stickers
+        user: { ...user, isLogged: true },
+        stickers,
+        theme: { ...state.theme, isLightTheme: isLightTheme },
+        localization: { ...state.localization, language: language }
       };
+
+    case SIGN_OUT:
+      return action.payload;
 
     default:
       return state;

@@ -13,7 +13,7 @@ const firebaseConfig = {
   appId: '1:210064489150:web:4a80f6691650254d5bfcef',
   measurementId: 'G-1WR7GSB1SH'
 };
-var provider = new firebase.auth.GoogleAuthProvider();
+const provider = new firebase.auth.GoogleAuthProvider();
 
 class Firebase {
   constructor() {
@@ -33,6 +33,7 @@ class Firebase {
       });
     return user;
   }
+  //signinWithPopup
   async googleSignin() {
     const user = await firebase
       .auth()
@@ -119,11 +120,12 @@ class Firebase {
   //   });
   // }
   async updateSettings(userID, parameter) {
-    console.log(userID, parameter);
     const settings = await firebase
       .firestore()
       .collection('data')
       .doc(userID)
+      .collection('settings')
+      .doc('common')
       .set(parameter, { merge: true })
       .catch(err => console.log(err));
     console.log('Settings Updated');
@@ -134,13 +136,13 @@ class Firebase {
       .firestore()
       .collection('data')
       .doc(userID)
-      .doc('settings')
+      .collection('settings')
+      .doc('common')
       .get()
       .catch(err => {
         console.log(err);
       });
-    console.log(settings);
-    return settings;
+    return settings.data();
   }
 
   async getStickers(userID) {
@@ -155,5 +157,4 @@ class Firebase {
     return data;
   }
 }
-
 export default new Firebase();

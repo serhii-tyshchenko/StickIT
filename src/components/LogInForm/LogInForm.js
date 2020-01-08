@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import './LogInForm.scss';
 import { Store } from '../../store';
 import { SIGN_IN } from '../../store/action-types';
-import db from '../../services/db/firebase';
+import db from '../../services/db';
 
 const LogInForm = ({ isVisible, handleClose }) => {
   const initialState = { email: '', password: '' };
@@ -16,20 +16,18 @@ const LogInForm = ({ isVisible, handleClose }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    db.googleSignin();
-    // const response = await db.login(state.email, state.password);
-    // if (response.hasOwnProperty('message')) {
-    //   console.log(response.message);
-    // } else {
-    //   handleClose();
-    //   console.log(response.user);
-    //   const { uid, email } = response.user;
-    //   const stickers = await db.getStickers(uid);
-    //   return dispatch({
-    //     type: SIGN_IN,
-    //     payload: { user: { uid, email }, stickers: stickers }
-    //   });
-    // }
+    const response = await db.login(state.email, state.password);
+    if (response.hasOwnProperty('message')) {
+      console.log(response.message);
+    } else {
+      handleClose();
+      const { uid, email } = response.user;
+      const stickers = await db.getStickers(uid);
+      return dispatch({
+        type: SIGN_IN,
+        payload: { user: { uid, email }, stickers: stickers }
+      });
+    }
   };
 
   return (

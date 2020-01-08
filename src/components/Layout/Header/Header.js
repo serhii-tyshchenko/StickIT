@@ -1,44 +1,47 @@
 import React, { useContext, useState } from 'react';
 import { LogInForm } from '../../LogInForm';
 import { Store } from '../../../store';
-import { addSticker, toggleTheme } from '../../../store/actions';
-import { SIGN_IN } from '../../../store/action-types';
-import db from '../../../services/db/firebase';
+import {
+  addSticker,
+  toggleTheme,
+  signInGoogle,
+  signOut
+} from '../../../store/actions';
 
 import './Header.scss';
 
 const Header = () => {
   const { user, theme, dispatch } = useContext(Store);
+  const { uid, photoURL } = user;
   const { isLightTheme, light, dark } = theme;
   const headerStyle = isLightTheme ? light : dark;
   const [state, setState] = useState({
-    photoURL: '',
-    classField: 'header__menu__btn icon-user'
+    showLoginForm: false
   });
 
   const handleToggleTheme = () => {
-    toggleTheme(dispatch, user.uid, isLightTheme);
+    toggleTheme(dispatch, uid, isLightTheme);
   };
 
-  const handleSignIn = async () => {
-    const response = await db.googleSignin();
-    const { uid, email, photoURL } = response.user;
-    const stickers = await db.getStickers(uid);
-    setState({
-      photoURL,
-      classField: 'header__menu__btn header__menu__btn--login'
-    });
-    return dispatch({
-      type: SIGN_IN,
-      payload: { user: { uid, email, photoURL }, stickers: stickers }
-    });
+  const handleSignInClick = () => {
+    if (user.isLogged) {
+      signOut(dispatch);
+    } else {
+      signInGoogle(dispatch);
+    }
   };
   const AddSticker = () => {
-    addSticker(dispatch, user.uid);
+    addSticker(dispatch, uid);
+  };
+  const toggleModal = () => {
+    setState({ ...state, showLoginForm: !state.showLoginForm });
   };
   const themeIconClass = isLightTheme
     ? 'header__menu__btn icon-moon'
     : 'header__menu__btn icon-sun';
+  const userIconClass = photoURL
+    ? 'header__menu__btn header__menu__btn--login'
+    : 'header__menu__btn icon-user';
   return (
     <>
       <header style={headerStyle}>
@@ -56,14 +59,14 @@ const Header = () => {
               title={isLightTheme ? 'Dark' : 'Light'}
             />
             <button
-              className={state.classField}
-              onClick={handleSignIn}
-              style={{ backgroundImage: `url(${state.photoURL})` }}
+              className={userIconClass}
+              onClick={handleSignInClick}
+              style={{ backgroundImage: `url(${photoURL})` }}
             />
           </div>
         </div>
       </header>
-      {/* <LogInForm isVisible={state.showModal} handleClose={handleSignIn} /> */}
+      {/* <LogInForm isVisible={state.showModal} handleClose={toggleModal} /> */}
     </>
   );
 };

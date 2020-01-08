@@ -1,29 +1,23 @@
 import React, { createContext, useReducer, useEffect } from 'react';
 import { rootReducer } from './reducers';
-
+import initialState from './initial-state';
 const Store = createContext();
-const initialState = {
-  theme: {
-    isLightTheme: false,
-    dark: { background: '#052b3c', color: '#fff' },
-    light: { background: '#fff', color: '#052b3c' }
-  },
-  localization: {
-    language: 'en'
-  },
-  stickers: []
+
+const init = () => {
+  return JSON.parse(localStorage.getItem('StickIt')) || initialState;
 };
+
 const StoreProvider = props => {
   const [state, dispatch] = useReducer(
     rootReducer,
     initialState,
-    () => JSON.parse(localStorage.getItem('StickIt')) || initialState
-    // initialState
+    init
     // TODO save user to LS
   );
+
   useEffect(() => {
     localStorage.setItem('StickIt', JSON.stringify(state));
-  }, [state]);
+  });
 
   return (
     <Store.Provider value={{ ...state, dispatch }}>
