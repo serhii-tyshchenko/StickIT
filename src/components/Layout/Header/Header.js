@@ -12,10 +12,14 @@ import {
 import './Header.scss';
 
 const Header = () => {
-  const { user, theme, dispatch } = useContext(Store);
-  const { uid, photoURL } = user;
-  const { isLightTheme, light, dark } = theme;
+  const {
+    user: { uid, photoURL, isLogged },
+    theme: { isLightTheme, light, dark },
+    dispatch
+  } = useContext(Store);
+
   const headerStyle = isLightTheme ? light : dark;
+
   const [state, setState] = useState({
     showLogInForm: false
   });
@@ -24,33 +28,40 @@ const Header = () => {
     toggleTheme(dispatch, uid, isLightTheme);
   };
 
-  const handleSignIn = () => {
-    if (user.isLogged) {
+  const toggleLogInForm = () => {
+    setState({ showLogInForm: !state.showLogInForm });
+  };
+
+  const handleLogInClick = () => {
+    if (isLogged) {
       signOut(dispatch);
     } else {
-      setState({ ...state, showLogInForm: !state.showLogInForm });
+      toggleLogInForm();
     }
   };
+
   const handleSignInWithEmail = async (email, password) => {
     await signInWithEmail(dispatch, email, password);
-    setState({ ...state, showLogInForm: !state.showLogInForm });
+    toggleLogInForm();
   };
+
   const handleSignInWithGoogle = async () => {
     await signInWithGoogle(dispatch);
-    setState({ ...state, showLogInForm: !state.showLogInForm });
+    toggleLogInForm();
   };
+
   const AddSticker = () => {
     addSticker(dispatch, uid);
   };
-  const toggleLogInForm = () => {
-    setState({ ...state, showLogInForm: !state.showLogInForm });
-  };
+
   const themeIconClass = isLightTheme
     ? 'header__menu__btn icon-moon'
     : 'header__menu__btn icon-sun';
+
   const userIconClass = photoURL
     ? 'header__menu__btn header__menu__btn--login'
     : 'header__menu__btn icon-user';
+
   return (
     <>
       <header style={headerStyle}>
@@ -70,7 +81,7 @@ const Header = () => {
             <button
               className={userIconClass}
               // onClick={handleSignIn}
-              onClick={handleSignIn}
+              onClick={handleLogInClick}
               style={{
                 backgroundImage: `url(${photoURL})`
               }}

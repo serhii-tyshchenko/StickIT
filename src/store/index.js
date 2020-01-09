@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useEffect } from 'react';
 import { rootReducer } from './reducers';
 import initialState from './initial-state';
+
 const Store = createContext();
 
 const init = () => {

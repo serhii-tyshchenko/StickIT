@@ -9,8 +9,10 @@ const initialState = {
   },
   stickers: [],
   user: {
-    uid: null
-  }
+    uid: null,
+    isLogged: false
+  },
+  authError: null
 };
 
 export default initialState;
