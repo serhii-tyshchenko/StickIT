@@ -19,7 +19,7 @@ const Header = () => {
   } = useContext(Store);
 
   const headerStyle = isLightTheme ? light : dark;
-
+  document.body.style.backgroundColor = headerStyle.background;
   const [state, setState] = useState({
     showLogInForm: false
   });

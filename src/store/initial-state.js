@@ -14,5 +14,6 @@ const initialState = {
   },
   authError: null
 };
+// document.body.style.backgroundColor = initialState.theme.dark.background;
 
 export default initialState;

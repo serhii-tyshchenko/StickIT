@@ -42,46 +42,48 @@ const StickerListItem = ({ sticker }) => {
     ? 'sticker__btn icon-pin'
     : 'sticker__btn icon-pin-outline';
   return (
-    <li className="stickers__item sticker" style={{ backgroundColor: color }}>
-      <div className="sticker__header">
-        <input
-          className="sticker__title"
-          type="text"
-          value={title}
-          name="title"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          placeholder="Enter title..."
-        />
-        <div className="sticker__controls">
-          <button
-            className="sticker__btn icon-color-adjust"
-            onClick={handleColorClick}
-          >
-            {showColorPicker ? (
-              <ColorPicker
-                color={color}
-                handleColorChange={handleColorChange}
-              />
-            ) : null}
-          </button>
-          <button className={pinButtonClass} onClick={handlePinClick} />
-          <button
-            className="sticker__btn icon-trash-empty"
-            onClick={handleRemoveClick}
+    <li className="stickers__item sticker">
+      <div className="sticker__container" style={{ backgroundColor: color }}>
+        <div className="sticker__header">
+          <input
+            className="sticker__title"
+            type="text"
+            value={title}
+            name="title"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            placeholder="Enter title..."
+          />
+          <div className="sticker__controls">
+            <button
+              className="sticker__btn icon-color-adjust"
+              onClick={handleColorClick}
+            >
+              {showColorPicker ? (
+                <ColorPicker
+                  color={color}
+                  handleColorChange={handleColorChange}
+                />
+              ) : null}
+            </button>
+            <button className={pinButtonClass} onClick={handlePinClick} />
+            <button
+              className="sticker__btn icon-trash-empty"
+              onClick={handleRemoveClick}
+            />
+          </div>
+        </div>
+        <div className="sticker__details">
+          <textarea
+            className="sticker__text"
+            name="text"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            type="textarea"
+            value={text}
+            placeholder="Enter text..."
           />
         </div>
-      </div>
-      <div className="sticker__details">
-        <textarea
-          className="sticker__text"
-          name="text"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          type="textarea"
-          value={text}
-          placeholder="Enter text..."
-        />
       </div>
     </li>
   );

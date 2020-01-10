@@ -12,7 +12,7 @@ export const addSticker = async (dispatch, uid) => {
     id: uuid(),
     title: '',
     text: '',
-    color: '#fff',
+    color: '#fef3bd',
     isPinned: false
   };
   if (uid) await db.addSticker(uid, newSticker);

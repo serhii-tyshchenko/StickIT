@@ -3,4 +3,21 @@
   flex-wrap: wrap;
   justify-content: space-around;
   list-style-type: none;
+
+  &--pinned {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    &::before,
+    &::after {
+      content: '';
+    }
+    margin-bottom: 50px;
+    overflow-x: auto;
+    .sticker:first-child {
+      padding-left: 0;
+    }
+    .sticker:last-child {
+      padding-right: 0;
+    }
+  }
 }

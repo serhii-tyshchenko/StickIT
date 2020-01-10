@@ -1,6 +1,6 @@
 import { SIGN_IN, SIGN_OUT, SIGN_IN_ERROR } from '../action-types';
 import initialState from '../initial-state';
-import db from '../../services/db/firebase';
+import db from '../../services/db';
 
 export const signInWithEmail = async (dispatch, email, password) => {
   const response = await db.signInWithEmail(email, password);
