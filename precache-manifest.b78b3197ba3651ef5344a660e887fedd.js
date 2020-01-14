@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "428bc7a6e2c2438544edb98226653ec0",
+    "revision": "1acee5b3142c52137aaf9042922ecc0e",
     "url": "/StickIT/index.html"
   },
   {
-    "revision": "d4e74375e4505f089bdc",
+    "revision": "a0f5500d8997c6e17930",
     "url": "/StickIT/static/css/main.b37148eb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/StickIT/static/js/2.0be1a0d2.chunk.js.LICENSE"
   },
   {
-    "revision": "d4e74375e4505f089bdc",
-    "url": "/StickIT/static/js/main.3239001b.chunk.js"
+    "revision": "a0f5500d8997c6e17930",
+    "url": "/StickIT/static/js/main.5b0a6f6f.chunk.js"
   },
   {
     "revision": "f5570950e279f18d78a1",

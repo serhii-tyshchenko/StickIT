@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/StickIT/static/css/main.b37148eb.chunk.css",
-    "main.js": "/StickIT/static/js/main.3239001b.chunk.js",
-    "main.js.map": "/StickIT/static/js/main.3239001b.chunk.js.map",
+    "main.js": "/StickIT/static/js/main.5b0a6f6f.chunk.js",
+    "main.js.map": "/StickIT/static/js/main.5b0a6f6f.chunk.js.map",
     "runtime-main.js": "/StickIT/static/js/runtime-main.f74937d1.js",
     "runtime-main.js.map": "/StickIT/static/js/runtime-main.f74937d1.js.map",
     "static/js/2.0be1a0d2.chunk.js": "/StickIT/static/js/2.0be1a0d2.chunk.js",
     "static/js/2.0be1a0d2.chunk.js.map": "/StickIT/static/js/2.0be1a0d2.chunk.js.map",
     "index.html": "/StickIT/index.html",
-    "precache-manifest.3660f98e38714d9f1d3e5c921c56f5ea.js": "/StickIT/precache-manifest.3660f98e38714d9f1d3e5c921c56f5ea.js",
+    "precache-manifest.b78b3197ba3651ef5344a660e887fedd.js": "/StickIT/precache-manifest.b78b3197ba3651ef5344a660e887fedd.js",
     "service-worker.js": "/StickIT/service-worker.js",
     "static/css/main.b37148eb.chunk.css.map": "/StickIT/static/css/main.b37148eb.chunk.css.map",
     "static/js/2.0be1a0d2.chunk.js.LICENSE": "/StickIT/static/js/2.0be1a0d2.chunk.js.LICENSE",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.f74937d1.js",
     "static/js/2.0be1a0d2.chunk.js",
     "static/css/main.b37148eb.chunk.css",
-    "static/js/main.3239001b.chunk.js"
+    "static/js/main.5b0a6f6f.chunk.js"
   ]
 }
