@@ -29,7 +29,7 @@ class Firebase {
 
   signInWithGoogle = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    await firebase
+    return await firebase
       .auth()
       .signInWithPopup(provider)
       .catch(error => error.message);
