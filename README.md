@@ -1,5 +1,7 @@
 # StickIT (simple sticker app)
 
+Live demo: https://serhii-tyshchenko.github.io/StickIt
+
 ## Stack:
 - React
 - Context API
