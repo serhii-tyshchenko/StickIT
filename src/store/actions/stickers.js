@@ -16,6 +16,4 @@ export const addSticker = () => {
   return { type: ADD_STICKER, payload: newSticker };
 };
 
-export const removeSticker = id => {
-  return { type: REMOVE_STICKER, payload: id };
-};
+export const removeSticker = id => ({ type: REMOVE_STICKER, payload: id });
