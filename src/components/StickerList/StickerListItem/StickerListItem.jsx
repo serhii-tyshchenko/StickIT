@@ -5,13 +5,20 @@ import { removeSticker, editSticker } from 'store/actions';
 import './StickerListItem.scss';
 
 const StickerListItem = ({ sticker }) => {
-  const { dispatch } = useContext(Store);
+  const {
+    dispatch,
+    localization: { language, en, ua }
+  } = useContext(Store);
   const { id, color, isPinned } = sticker;
   const initialState = {
     title: sticker.title,
     text: sticker.text,
     showColorPicker: false
   };
+
+  const lang = language === 'en' ? en : ua;
+  console.log(lang);
+
   const [state, setState] = useState(initialState);
   const { title, text, showColorPicker } = state;
   const pinButtonClass = isPinned
@@ -53,12 +60,13 @@ const StickerListItem = ({ sticker }) => {
             name="title"
             onChange={handleChange}
             onBlur={handleBlur}
-            placeholder="Enter title..."
+            placeholder={lang.stickerTitlePlaceholder}
           />
           <div className="sticker__controls">
             <button
               className="sticker__btn icon-color-adjust"
               onClick={handleColorClick}
+              title={lang.changeColorAlt}
             >
               {showColorPicker ? (
                 <ColorPicker
@@ -67,10 +75,15 @@ const StickerListItem = ({ sticker }) => {
                 />
               ) : null}
             </button>
-            <button className={pinButtonClass} onClick={handlePinClick} />
+            <button
+              className={pinButtonClass}
+              onClick={handlePinClick}
+              title={lang.pinStickerAlt}
+            />
             <button
               className="sticker__btn icon-trash-empty"
               onClick={handleRemoveClick}
+              title={lang.removeStickerAlt}
             />
           </div>
         </div>
@@ -82,7 +95,7 @@ const StickerListItem = ({ sticker }) => {
             onBlur={handleBlur}
             type="textarea"
             value={text}
-            placeholder="Enter text..."
+            placeholder={lang.stickerTextPlaceholder}
           />
         </div>
       </div>

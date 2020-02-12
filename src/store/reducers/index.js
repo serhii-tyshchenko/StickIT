@@ -2,7 +2,8 @@ import {
   ADD_STICKER,
   EDIT_STICKER,
   REMOVE_STICKER,
-  TOGGLE_THEME
+  TOGGLE_THEME,
+  TOGGLE_LANGUAGE
 } from '../action-types';
 
 const rootReducer = (state, action) => {
@@ -36,6 +37,12 @@ const rootReducer = (state, action) => {
       return {
         ...state,
         theme: { ...state.theme, isLightTheme: !payload }
+      };
+
+    case TOGGLE_LANGUAGE:
+      return {
+        ...state,
+        localization: { ...state.localization, language: payload }
       };
     default:
       return state;

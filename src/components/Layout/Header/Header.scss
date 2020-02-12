@@ -17,6 +17,7 @@ header {
     &__btn {
       color: inherit;
       font-size: 2rem;
+      text-transform: uppercase;
       opacity: 0.8;
       transition: opacity 300ms ease-in;
       &--login {
