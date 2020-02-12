@@ -3,12 +3,13 @@
 Live demo: https://serhii-tyshchenko.github.io/StickIT/
 
 ## Stack:
+
 - React
 - Context API
 - Hooks
-- Firebase
 
 ## Features:
+
 - Add/edit/remove sticker
 - change sticker color
-- sticker list saved to LocalStorage/firebase
+- sticker list saved to LocalStorage

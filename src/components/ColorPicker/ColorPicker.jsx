@@ -1,5 +1,6 @@
 import React from 'react';
 import { GithubPicker } from 'react-color';
+
 const ColorPicker = ({ color, handleColorChange }) => {
   return (
     <div style={{ position: 'absolute', top: '150%', right: '-5px' }}>
@@ -20,4 +21,5 @@ const ColorPicker = ({ color, handleColorChange }) => {
     </div>
   );
 };
+
 export { ColorPicker };

@@ -7,12 +7,7 @@ const initialState = {
   localization: {
     language: 'en'
   },
-  stickers: [],
-  user: {
-    uid: null,
-    isLogged: false
-  },
-  authError: null
+  stickers: []
 };
 // document.body.style.backgroundColor = initialState.theme.dark.background;
 

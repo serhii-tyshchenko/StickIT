@@ -2,10 +2,7 @@ import {
   ADD_STICKER,
   EDIT_STICKER,
   REMOVE_STICKER,
-  TOGGLE_THEME,
-  SIGN_IN,
-  SIGN_OUT,
-  SIGN_IN_ERROR
+  TOGGLE_THEME
 } from '../action-types';
 
 const rootReducer = (state, action) => {
@@ -40,31 +37,6 @@ const rootReducer = (state, action) => {
         ...state,
         theme: { ...state.theme, isLightTheme: !payload }
       };
-
-    case SIGN_IN:
-      const {
-        user,
-        stickers,
-        settings: { isLightTheme, language }
-      } = payload;
-      return {
-        ...state,
-        user: { ...user, isLogged: true },
-        stickers,
-        theme: { ...state.theme, isLightTheme },
-        localization: { ...state.localization, language },
-        authError: null
-      };
-
-    case SIGN_IN_ERROR:
-      return {
-        ...state,
-        authError: payload
-      };
-
-    case SIGN_OUT:
-      return payload;
-
     default:
       return state;
   }
