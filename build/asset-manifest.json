@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/StickIT/static/css/main.0d74d0c8.chunk.css",
+    "main.js": "/StickIT/static/js/main.d115222e.chunk.js",
+    "main.js.map": "/StickIT/static/js/main.d115222e.chunk.js.map",
+    "runtime-main.js": "/StickIT/static/js/runtime-main.f74937d1.js",
+    "runtime-main.js.map": "/StickIT/static/js/runtime-main.f74937d1.js.map",
+    "static/js/2.1743823d.chunk.js": "/StickIT/static/js/2.1743823d.chunk.js",
+    "static/js/2.1743823d.chunk.js.map": "/StickIT/static/js/2.1743823d.chunk.js.map",
+    "index.html": "/StickIT/index.html",
+    "precache-manifest.9f74c1b96ab8179cfe8b5ce51131c788.js": "/StickIT/precache-manifest.9f74c1b96ab8179cfe8b5ce51131c788.js",
+    "service-worker.js": "/StickIT/service-worker.js",
+    "static/css/main.0d74d0c8.chunk.css.map": "/StickIT/static/css/main.0d74d0c8.chunk.css.map",
+    "static/js/2.1743823d.chunk.js.LICENSE": "/StickIT/static/js/2.1743823d.chunk.js.LICENSE",
+    "static/media/App.scss": "/StickIT/static/media/fontello.c183f11e.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f74937d1.js",
+    "static/js/2.1743823d.chunk.js",
+    "static/css/main.0d74d0c8.chunk.css",
+    "static/js/main.d115222e.chunk.js"
+  ]
+}
