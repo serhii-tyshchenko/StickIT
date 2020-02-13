@@ -4,17 +4,10 @@ import initialState from './initial-state';
 
 const Store = createContext();
 
-const init = () => {
-  return JSON.parse(localStorage.getItem('StickIt')) || initialState;
-};
+const savedData = JSON.parse(localStorage.getItem('StickIt')) || initialState;
 
 const StoreProvider = props => {
-  const [state, dispatch] = useReducer(
-    rootReducer,
-    initialState,
-    init
-    // TODO save user to LS
-  );
+  const [state, dispatch] = useReducer(rootReducer, savedData);
 
   useEffect(() => {
     localStorage.setItem('StickIt', JSON.stringify(state));

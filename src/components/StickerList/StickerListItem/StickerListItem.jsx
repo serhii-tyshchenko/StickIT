@@ -17,7 +17,6 @@ const StickerListItem = ({ sticker }) => {
   };
 
   const lang = language === 'en' ? en : ua;
-  console.log(lang);
 
   const [state, setState] = useState(initialState);
   const { title, text, showColorPicker } = state;
