@@ -1,7 +1,5 @@
 # StickIT (simple sticker app)
 
-Live demo: https://serhii-tyshchenko.github.io/StickIT/
-
 ## Stack:
 
 - React
