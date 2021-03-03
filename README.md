@@ -1,4 +1,4 @@
-# StickIT (simple sticker app)
+# StickIT
 
 ## Stack:
 
