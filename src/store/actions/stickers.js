@@ -1,5 +1,5 @@
 import { ADD_STICKER, EDIT_STICKER, REMOVE_STICKER } from '../action-types';
-import uuid from 'uuid/v1';
+import {v4 as uuidv4} from 'uuid';
 
 export const editSticker = (id, key, value) => ({
   type: EDIT_STICKER,
@@ -7,7 +7,7 @@ export const editSticker = (id, key, value) => ({
 });
 export const addSticker = () => {
   const newSticker = {
-    id: uuid(),
+    id: uuidv4(),
     title: '',
     text: '',
     color: '#fef3bd',
