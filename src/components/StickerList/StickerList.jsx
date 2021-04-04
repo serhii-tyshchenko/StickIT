@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { StickerListItem } from './StickerListItem';
 import { Store } from 'store';
+
 import './StickerList.scss';
 
 export const StickerList = () => {

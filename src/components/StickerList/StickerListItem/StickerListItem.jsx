@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { ColorPicker } from 'components/ColorPicker';
 import { Store } from 'store';
 import { removeSticker, editSticker } from 'store/actions';
+
 import './StickerListItem.scss';
 
 const StickerListItem = ({ sticker }) => {
