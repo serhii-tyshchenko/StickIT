@@ -3,19 +3,6 @@
   "homepage": "https://serhii-tyshchenko.github.io/StickIT",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "node-sass": "^4.13.1",
-    "react": "^16.12.0",
-    "react-color": "^2.17.3",
-    "react-dom": "^16.12.0",
-    "react-scripts": "^3.3.0"
-  },
-  "prettier": {
-    "trailingComma": "none",
-    "tabWidth": 2,
-    "semi": true,
-    "singleQuote": true
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -23,6 +10,23 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "node-sass": "latest",
+    "react": "latest",
+    "react-color": "latest",
+    "react-dom": "latest",
+    "react-scripts": "latest"
+  },
+  "devDependencies": {
+    "gh-pages": "latest",
+    "uuid": "latest"
+  },
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,9 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^2.1.1",
-    "uuid": "^3.3.3"
   }
 }
