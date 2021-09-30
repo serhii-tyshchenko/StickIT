@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <footer style={footerStyle}>
-      <div className="wrapper">© Serhii Tyshchenko, 2020</div>
+      <div className="wrapper">© Serhii Tyshchenko</div>
     </footer>
   );
 };
