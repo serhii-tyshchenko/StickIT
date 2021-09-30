@@ -1,6 +1,9 @@
 {
   "name": "stick-it",
-  "homepage": "https://serhii-tyshchenko.github.io/StickIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/serhii-tyshchenko/StickIT"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
