@@ -7,13 +7,11 @@ import './StickerList.scss';
 export const StickerList = () => {
   const { stickers } = useContext(Store);
   const pinnedStickers = stickers.filter(sticker => sticker.isPinned);
-  const unPinnedStickers = stickers.filter(
-    sticker => sticker.isPinned === false
-  );
+  const unPinnedStickers = stickers.filter(sticker => !sticker.isPinned);
 
   return (
     <>
-      {pinnedStickers.length > 0 && (
+      {pinnedStickers?.length && (
         <ul className="sticker-list sticker-list--pinned">
           {pinnedStickers.map(item => (
             <StickerListItem sticker={item} key={item.id} />

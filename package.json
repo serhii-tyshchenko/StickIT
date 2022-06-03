@@ -4,15 +4,13 @@
     "type": "git",
     "url": "https://github.com/serhii-tyshchenko/StickIT"
   },
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "node-sass": "latest",
@@ -22,7 +20,6 @@
     "react-scripts": "latest"
   },
   "devDependencies": {
-    "gh-pages": "latest",
     "uuid": "latest"
   },
   "prettier": {

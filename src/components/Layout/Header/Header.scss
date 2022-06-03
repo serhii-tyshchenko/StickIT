@@ -1,33 +1,39 @@
 header {
-  background: #052b3c;
+  background: rgb(5, 43, 60);
 }
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+
   &__logo {
     font-size: 2rem;
   }
+
   &__menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 200px;
+
     &__btn {
       color: inherit;
       font-size: 2rem;
       text-transform: uppercase;
       opacity: 0.8;
       transition: opacity 300ms ease-in;
+
       &--login {
         width: 36px;
         height: 36px;
-        border: 1px solid lightgrey;
+        border: 1px solid rgb(211, 211, 211);
         border-radius: 50%;
         background-repeat: no-repeat;
         background-size: cover;
       }
+
       &:hover {
         opacity: 1;
       }

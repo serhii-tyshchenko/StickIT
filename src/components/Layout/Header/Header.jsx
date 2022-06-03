@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useCallback } from 'react';
 import { Store } from 'store';
 import { addSticker, toggleTheme, toggleLanguage } from 'store/actions';
 
@@ -16,21 +16,13 @@ const Header = () => {
 
   const lang = language === 'en' ? en : ua;
 
-  const themeIconClass = isLightTheme
-    ? 'header__menu__btn icon-moon'
-    : 'header__menu__btn icon-sun';
+  const themeIconClass = `header__menu__btn ${isLightTheme ? 'icon-moon' : 'icon-sun'}`;
 
-  function onToggleLanguage() {
-    dispatch(toggleLanguage(language === 'en' ? 'ua' : 'en'));
-  }
+  const onToggleLanguage = useCallback(() => dispatch(toggleLanguage(language === 'en' ? 'ua' : 'en')), [dispatch, language]);
 
-  function handleToggleTheme() {
-    dispatch(toggleTheme(isLightTheme));
-  }
+  const handleToggleTheme = useCallback(() => dispatch(toggleTheme(isLightTheme)), [dispatch, isLightTheme]);
 
-  function AddSticker() {
-    dispatch(addSticker());
-  }
+  const AddSticker = () => dispatch(addSticker());
 
   return (
     <>
