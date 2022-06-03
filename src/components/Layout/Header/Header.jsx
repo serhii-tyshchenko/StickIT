@@ -1,6 +1,7 @@
 import { useContext, useCallback } from 'react';
 import { Store } from 'store';
 import { addSticker, toggleTheme, toggleLanguage } from 'store/actions';
+import { default as dictionary } from 'localization';
 
 import { IconButton } from 'components/IconButton';
 
@@ -9,7 +10,7 @@ import './Header.scss';
 const Header = () => {
   const {
     theme: { isLightTheme, light, dark },
-    localization: { language, en, ua },
+    language,
     dispatch
   } = useContext(Store);
 
@@ -17,7 +18,7 @@ const Header = () => {
 
   document.body.style.backgroundColor = headerStyle.background;
 
-  const lang = language === 'en' ? en : ua;
+  const dic = dictionary[language];
 
   const onToggleLanguage = useCallback(() => dispatch(toggleLanguage(language === 'en' ? 'ua' : 'en')), [dispatch, language]);
 
@@ -26,7 +27,7 @@ const Header = () => {
   const AddSticker = () => dispatch(addSticker());
 
   const toggleThemeIcon = isLightTheme ? 'moon' : 'sun';
-  const toggleThemeIconTitle = isLightTheme ? lang.darkThemeTitle : lang.lightThemeTitle;
+  const toggleThemeIconTitle = isLightTheme ? dic.darkThemeTitle : dic.lightThemeTitle;
 
   return (
     <>
@@ -38,7 +39,7 @@ const Header = () => {
               extraClassName="header__menu__btn"
               icon="plus"
               onClick={AddSticker}
-              title={lang.addNewStickerAlt}
+              title={dic.addNewStickerAlt}
             />
             <button type="button" className="header__menu__btn" onClick={onToggleLanguage}>
               {language}

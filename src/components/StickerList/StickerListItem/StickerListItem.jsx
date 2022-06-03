@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { Store } from 'store';
 import { removeSticker, editSticker } from 'store/actions';
+import { default as dictionary } from 'localization';
 
 import { ColorPicker } from 'components/ColorPicker';
 import { IconButton } from 'components/IconButton';
@@ -12,7 +13,7 @@ import './StickerListItem.scss';
 const StickerListItem = ({ sticker }) => {
   const {
     dispatch,
-    localization: { language, en, ua }
+    language,
   } = useContext(Store);
   const { id, color, isPinned } = sticker;
   const initialState = {
@@ -21,7 +22,7 @@ const StickerListItem = ({ sticker }) => {
     showColorPicker: false
   };
 
-  const lang = language === 'en' ? en : ua;
+  const dic = dictionary[language];
 
   const [state, setState] = useState(initialState);
   const { title, text, showColorPicker } = state;
@@ -62,14 +63,14 @@ const StickerListItem = ({ sticker }) => {
             name="title"
             onChange={handleChange}
             onBlur={handleBlur}
-            placeholder={lang.stickerTitlePlaceholder}
+            placeholder={dic.stickerTitlePlaceholder}
           />
           <div className="sticker__controls">
             <IconButton
               extraClassName="sticker__btn"
               icon="color-adjust"
               onClick={handleColorClick}
-              title={lang.changeColorAlt}
+              title={dic.changeColorAlt}
             >
               {showColorPicker ? (
                 <ColorPicker
@@ -82,13 +83,13 @@ const StickerListItem = ({ sticker }) => {
               extraClassName="sticker__btn"
               icon={pinButtonIcon}
               onClick={handlePinClick}
-              title={lang.pinStickerAlt}
+              title={dic.pinStickerAlt}
             />
             <IconButton
               extraClassName="sticker__btn"
               icon="trash-empty"
               onClick={handleRemoveClick}
-              title={lang.removeStickerAlt}
+              title={dic.removeStickerAlt}
             />
           </div>
         </div>
@@ -100,7 +101,7 @@ const StickerListItem = ({ sticker }) => {
             onBlur={handleBlur}
             type="textarea"
             value={text}
-            placeholder={lang.stickerTextPlaceholder}
+            placeholder={dic.stickerTextPlaceholder}
           />
         </div>
       </div>
