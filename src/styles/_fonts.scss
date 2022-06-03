@@ -1,0 +1,54 @@
+@font-face {
+  font-weight: normal;
+  font-family: 'fontello';
+  font-style: normal;
+  src: url('~assets/fonts/fontello.ttf') format('truetype');
+}
+
+[class^='icon-']:before,
+[class*=' icon-']:before {
+  display: inline-block;
+  width: 1em;
+  margin-right: 0.2em;
+
+  margin-left: 0.2em;
+  font-weight: normal;
+  font-family: 'fontello';
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1em;
+  text-align: center;
+  text-transform: none;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+.icon-pin-outline:before {
+  content: '\e801';
+}
+
+.icon-pin:before {
+  content: '\e802';
+}
+
+.icon-trash-empty:before {
+  content: '\e803';
+}
+
+.icon-plus:before {
+  content: '\e806';
+}
+
+.icon-color-adjust:before {
+  content: '\f020';
+}
+
+.icon-sun:before {
+  content: '\f185';
+}
+
+.icon-moon:before {
+  content: '\f186';
+}

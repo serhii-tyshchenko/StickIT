@@ -1,4 +1,5 @@
 import { GithubPicker } from 'react-color';
+import { colorPickerPropTypes } from './ColorPicker.props';
 
 const ColorPicker = ({ color, handleColorChange }) => {
   return (
@@ -20,5 +21,8 @@ const ColorPicker = ({ color, handleColorChange }) => {
     </div>
   );
 };
+
+ColorPicker.propTypes = colorPickerPropTypes;
+
 
 export { ColorPicker };

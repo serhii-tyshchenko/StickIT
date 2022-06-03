@@ -1,4 +1,6 @@
-export const IconButton = ({ icon, onClick, extraClassName, title, children }) => {
+import { iconButtonPropTypes, iconButtonDefaultProps } from './IconButton.props';
+
+const IconButton = ({ icon, onClick, extraClassName, title, children }) => {
 
   const componentClassName = `icon-${icon} ${extraClassName}`;
 
@@ -13,3 +15,8 @@ export const IconButton = ({ icon, onClick, extraClassName, title, children }) =
     </button>
   );
 };
+
+IconButton.propTypes = iconButtonPropTypes;
+IconButton.defaultProps = iconButtonDefaultProps;
+
+export { IconButton };

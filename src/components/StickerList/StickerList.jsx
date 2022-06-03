@@ -1,8 +1,11 @@
 import { StickerListItem } from './StickerListItem';
 
+import { stickerListPropTypes, stickerListDefaultProps } from './StickerList.props';
+
+
 import './StickerList.scss';
 
-export const StickerList = ({ data, pinned }) => {
+const StickerList = ({ data, pinned }) => {
   if (!data || !data.length) {
     return null
   }
@@ -16,3 +19,8 @@ export const StickerList = ({ data, pinned }) => {
     </ul>
   );
 };
+
+StickerList.propTypes = stickerListPropTypes;
+StickerList.defaultProps = stickerListDefaultProps;
+
+export { StickerList };

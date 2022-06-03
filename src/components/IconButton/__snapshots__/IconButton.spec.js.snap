@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconButton renders correctly 1`] = `
+<button
+  className="icon-plus "
+  onClick={[MockFunction]}
+  title=""
+  type="button"
+/>
+`;

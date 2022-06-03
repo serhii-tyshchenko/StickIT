@@ -19,7 +19,7 @@ const rootReducer = (state, action) => {
       const { id, key, value } = payload;
       return {
         ...state,
-        stickers: state.stickers.map(sticker => {
+        stickers: state.stickers.map((sticker) => {
           if (sticker.id === id) {
             sticker[key] = value;
           }
@@ -30,19 +30,19 @@ const rootReducer = (state, action) => {
     case REMOVE_STICKER:
       return {
         ...state,
-        stickers: state.stickers.filter(sticker => sticker.id !== payload)
+        stickers: state.stickers.filter((sticker) => sticker.id !== payload)
       };
 
     case TOGGLE_THEME:
       return {
         ...state,
-        theme: { ...state.theme, isLightTheme: !payload }
+        theme: payload
       };
 
     case TOGGLE_LANGUAGE:
       return {
         ...state,
-        localization: { ...state.localization, language: payload }
+        language: payload
       };
     default:
       return state;

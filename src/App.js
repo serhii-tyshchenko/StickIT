@@ -1,18 +1,21 @@
+import { useContext } from 'react';
+import { Store } from 'store';
 import { Header, Footer, StickerListView } from 'components';
-import { StoreProvider } from 'store';
 
-import './App.scss';
+const App = () => {
+  const { theme } = useContext(Store);
 
-const App = () => (
-  <div className="App">
-    <StoreProvider>
+  document.documentElement.setAttribute('data-theme', theme);
+
+  return (
+    <div className="container">
       <Header />
       <main className="wrapper">
         <StickerListView />
       </main>
       <Footer />
-    </StoreProvider>
-  </div>
-);
+    </div>
+  );
+};
 
 export default App;

@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/serhii-tyshchenko/StickIT"
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": false,
   "scripts": {
     "start": "react-scripts start",
@@ -14,12 +14,14 @@
   },
   "dependencies": {
     "node-sass": "latest",
+    "prop-types": "^15.8.1",
     "react": "latest",
     "react-color": "latest",
     "react-dom": "latest",
     "react-scripts": "latest"
   },
   "devDependencies": {
+    "react-test-renderer": "^18.1.0",
     "uuid": "latest"
   },
   "prettier": {

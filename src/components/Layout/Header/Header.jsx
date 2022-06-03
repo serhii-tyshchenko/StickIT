@@ -1,51 +1,59 @@
 import { useContext, useCallback } from 'react';
 import { Store } from 'store';
 import { addSticker, toggleTheme, toggleLanguage } from 'store/actions';
+import { default as dictionary } from 'localization';
 
 import { IconButton } from 'components/IconButton';
 
 import './Header.scss';
 
+const themeIconConfig = {
+  light: 'moon',
+  dark: 'sun'
+}
+
+const themeToggleConfig = {
+  light: 'dark',
+  dark: 'light'
+}
+
 const Header = () => {
   const {
-    theme: { isLightTheme, light, dark },
-    localization: { language, en, ua },
+    theme,
+    language,
     dispatch
   } = useContext(Store);
 
-  const headerStyle = isLightTheme ? light : dark;
-
-  document.body.style.backgroundColor = headerStyle.background;
-
-  const lang = language === 'en' ? en : ua;
+  const dic = dictionary[language];
 
   const onToggleLanguage = useCallback(() => dispatch(toggleLanguage(language === 'en' ? 'ua' : 'en')), [dispatch, language]);
 
-  const handleToggleTheme = useCallback(() => dispatch(toggleTheme(isLightTheme)), [dispatch, isLightTheme]);
+  const handleToggleTheme = useCallback(() => dispatch(toggleTheme(themeToggleConfig[theme])), [dispatch, theme]);
 
   const AddSticker = () => dispatch(addSticker());
 
-  const toggleThemeIcon = isLightTheme ? 'moon' : 'sun';
-  const toggleThemeIconTitle = isLightTheme ? lang.darkThemeTitle : lang.lightThemeTitle;
+  const toggleThemeIconTitle = theme === 'light' ? dic.darkThemeTitle : dic.lightThemeTitle;
 
   return (
     <>
-      <header style={headerStyle}>
-        <div className="wrapper header">
-          <div className="header__logo">StickIt</div>
-          <div className="header__menu">
+      <header className="header">
+        <div className="wrapper header-content">
+          <div className="header-logo">StickIt</div>
+          <div className="header-menu">
             <IconButton
-              extraClassName="header__menu__btn"
+              extraClassName="header-menu__btn"
               icon="plus"
               onClick={AddSticker}
-              title={lang.addNewStickerAlt}
+              title={dic.addNewStickerAlt}
             />
-            <button type="button" className="header__menu__btn" onClick={onToggleLanguage}>
+            <button type="button"
+              className="header-menu__btn"
+              onClick={onToggleLanguage}>
               {language}
             </button>
             <IconButton
-              extraClassName="header__menu__btn"
-              icon={toggleThemeIcon}
+              extraClassName="header-menu__btn"
+              icon={themeIconConfig[theme]}
               onClick={handleToggleTheme}
               title={toggleThemeIconTitle}
             />
