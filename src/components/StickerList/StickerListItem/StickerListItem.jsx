@@ -5,6 +5,8 @@ import { removeSticker, editSticker } from 'store/actions';
 import { ColorPicker } from 'components/ColorPicker';
 import { IconButton } from 'components/IconButton';
 
+import { stickerListItemPropTypes } from './StickerListItem.props';
+
 import './StickerListItem.scss';
 
 const StickerListItem = ({ sticker }) => {
@@ -105,5 +107,8 @@ const StickerListItem = ({ sticker }) => {
     </li>
   );
 };
+
+StickerListItem.propTypes = stickerListItemPropTypes;
+
 
 export { StickerListItem };
