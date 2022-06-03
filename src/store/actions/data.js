@@ -5,6 +5,7 @@ export const editSticker = (id, key, value) => ({
   type: EDIT_STICKER,
   payload: { id, key, value }
 });
+
 export const addSticker = () => {
   const newSticker = {
     id: uuidv4(),

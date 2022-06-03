@@ -1,2 +1,2 @@
-export * from './stickers';
-export * from './theme';
+export * from './data';
+export * from './settings';

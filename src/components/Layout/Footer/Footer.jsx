@@ -2,8 +2,7 @@ import { useContext } from 'react';
 import { Store } from 'store';
 
 const Footer = () => {
-  const { theme } = useContext(Store);
-  const { isLightTheme, light, dark } = theme;
+  const { theme: { isLightTheme, light, dark } } = useContext(Store);
   const footerStyle = isLightTheme ? light : dark;
 
   return (

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Header, Footer, StickerList } from 'components';
 import { StoreProvider } from 'store';
 
