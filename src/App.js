@@ -1,4 +1,4 @@
-import { Header, Footer, StickerList } from 'components';
+import { Header, Footer, StickerListView } from 'components';
 import { StoreProvider } from 'store';
 
 import './App.scss';
@@ -8,7 +8,7 @@ const App = () => (
     <StoreProvider>
       <Header />
       <main className="wrapper">
-        <StickerList />
+        <StickerListView />
       </main>
       <Footer />
     </StoreProvider>
