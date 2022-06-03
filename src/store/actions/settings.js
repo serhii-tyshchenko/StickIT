@@ -1,11 +1,11 @@
 import { TOGGLE_THEME, TOGGLE_LANGUAGE } from '../action-types';
 
-export const toggleTheme = isLightTheme => ({
+export const toggleTheme = (theme) => ({
   type: TOGGLE_THEME,
-  payload: isLightTheme
+  payload: theme
 });
 
-export const toggleLanguage = lang => ({
+export const toggleLanguage = (lang) => ({
   type: TOGGLE_LANGUAGE,
   payload: lang
 });

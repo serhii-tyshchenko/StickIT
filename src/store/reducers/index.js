@@ -36,7 +36,7 @@ const rootReducer = (state, action) => {
     case TOGGLE_THEME:
       return {
         ...state,
-        theme: { ...state.theme, isLightTheme: !payload }
+        theme: payload
       };
 
     case TOGGLE_LANGUAGE:
