@@ -1,7 +1,9 @@
 import { useState, useContext } from 'react';
-import { ColorPicker } from 'components/ColorPicker';
 import { Store } from 'store';
 import { removeSticker, editSticker } from 'store/actions';
+
+import { ColorPicker } from 'components/ColorPicker';
+import { IconButton } from 'components/IconButton';
 
 import './StickerListItem.scss';
 
@@ -21,9 +23,7 @@ const StickerListItem = ({ sticker }) => {
 
   const [state, setState] = useState(initialState);
   const { title, text, showColorPicker } = state;
-  const pinButtonClass = isPinned
-    ? 'sticker__btn icon-pin'
-    : 'sticker__btn icon-pin-outline';
+  const pinButtonIcon = isPinned ? 'pin' : 'pin-outline';
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -63,8 +63,9 @@ const StickerListItem = ({ sticker }) => {
             placeholder={lang.stickerTitlePlaceholder}
           />
           <div className="sticker__controls">
-            <button
-              className="sticker__btn icon-color-adjust"
+            <IconButton
+              extraClassName="sticker__btn"
+              icon="color-adjust"
               onClick={handleColorClick}
               title={lang.changeColorAlt}
             >
@@ -74,14 +75,16 @@ const StickerListItem = ({ sticker }) => {
                   handleColorChange={handleColorChange}
                 />
               ) : null}
-            </button>
-            <button
-              className={pinButtonClass}
+            </IconButton>
+            <IconButton
+              extraClassName="sticker__btn"
+              icon={pinButtonIcon}
               onClick={handlePinClick}
               title={lang.pinStickerAlt}
             />
-            <button
-              className="sticker__btn icon-trash-empty"
+            <IconButton
+              extraClassName="sticker__btn"
+              icon="trash-empty"
               onClick={handleRemoveClick}
               title={lang.removeStickerAlt}
             />
