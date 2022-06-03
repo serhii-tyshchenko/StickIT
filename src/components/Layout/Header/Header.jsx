@@ -2,6 +2,8 @@ import { useContext, useCallback } from 'react';
 import { Store } from 'store';
 import { addSticker, toggleTheme, toggleLanguage } from 'store/actions';
 
+import { IconButton } from 'components/IconButton';
+
 import './Header.scss';
 
 const Header = () => {
@@ -12,11 +14,10 @@ const Header = () => {
   } = useContext(Store);
 
   const headerStyle = isLightTheme ? light : dark;
+
   document.body.style.backgroundColor = headerStyle.background;
 
   const lang = language === 'en' ? en : ua;
-
-  const themeIconClass = `header__menu__btn ${isLightTheme ? 'icon-moon' : 'icon-sun'}`;
 
   const onToggleLanguage = useCallback(() => dispatch(toggleLanguage(language === 'en' ? 'ua' : 'en')), [dispatch, language]);
 
@@ -24,24 +25,29 @@ const Header = () => {
 
   const AddSticker = () => dispatch(addSticker());
 
+  const toggleThemeIcon = isLightTheme ? 'moon' : 'sun';
+  const toggleThemeIconTitle = isLightTheme ? lang.darkThemeTitle : lang.lightThemeTitle;
+
   return (
     <>
       <header style={headerStyle}>
         <div className="wrapper header">
           <div className="header__logo">StickIt</div>
           <div className="header__menu">
-            <button
-              className="header__menu__btn icon-plus"
+            <IconButton
+              extraClassName="header__menu__btn"
+              icon="plus"
               onClick={AddSticker}
               title={lang.addNewStickerAlt}
             />
-            <button className="header__menu__btn" onClick={onToggleLanguage}>
+            <button type="button" className="header__menu__btn" onClick={onToggleLanguage}>
               {language}
             </button>
-            <button
-              className={themeIconClass}
+            <IconButton
+              extraClassName="header__menu__btn"
+              icon={toggleThemeIcon}
               onClick={handleToggleTheme}
-              title={isLightTheme ? lang.darkThemeTitle : lang.lightThemeTitle}
+              title={toggleThemeIconTitle}
             />
           </div>
         </div>
