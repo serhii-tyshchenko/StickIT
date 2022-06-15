@@ -6,6 +6,6 @@ export const stickerListItemPropTypes = {
     title: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
-    isPinned: PropTypes.bool.isRequired
-  }).isRequired
+    isPinned: PropTypes.bool.isRequired,
+  }).isRequired,
 };

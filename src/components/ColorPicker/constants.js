@@ -7,5 +7,5 @@ export const PRDEFINED_COLORS = [
   '#FEF3BD',
   '#C1E1C5',
   '#BEDADC',
-  '#C4DEF6'
+  '#C4DEF6',
 ];

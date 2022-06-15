@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import renderer from 'react-test-renderer';
 
 import { ColorPicker } from './index';
@@ -7,7 +8,7 @@ describe('ColorPicker', () => {
     const props = {
       onChange: jest.fn(),
       color: 'red',
-      opened: false
+      opened: false,
     };
     const component = renderer.create(<ColorPicker {...props} />).toJSON();
     expect(component).toMatchSnapshot();
@@ -16,7 +17,7 @@ describe('ColorPicker', () => {
     const props = {
       onChange: jest.fn(),
       color: 'red',
-      opened: true
+      opened: true,
     };
     const component = renderer.create(<ColorPicker {...props} />).toJSON();
     expect(component).toMatchSnapshot();

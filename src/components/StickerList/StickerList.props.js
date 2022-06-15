@@ -7,12 +7,12 @@ export const stickerListPropTypes = {
       title: PropTypes.string.isRequired,
       color: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
-      isPinned: PropTypes.bool.isRequired
+      isPinned: PropTypes.bool.isRequired,
     })
   ).isRequired,
-  pinned: PropTypes.bool
+  pinned: PropTypes.bool,
 };
 
 export const stickerListDefaultProps = {
-  pinned: false
+  pinned: false,
 };

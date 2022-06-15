@@ -1,1 +1,2 @@
-export { ColorPicker } from './ColorPicker';
+// eslint-disable-next-line import/prefer-default-export
+export { default as ColorPicker } from './ColorPicker';

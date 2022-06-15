@@ -1,7 +1,7 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useCallback } from 'react';
 import { Store } from 'store';
 import { removeSticker, editSticker } from 'store/actions';
-import { default as dictionary } from 'localization';
+import dictionary from 'localization';
 
 import { ColorPicker } from 'components/ColorPicker';
 import { IconButton } from 'components/IconButton';
@@ -10,16 +10,13 @@ import { stickerListItemPropTypes } from './StickerListItem.props';
 
 import './StickerListItem.scss';
 
-const StickerListItem = ({ sticker }) => {
-  const {
-    dispatch,
-    language,
-  } = useContext(Store);
+function StickerListItem({ sticker }) {
+  const { dispatch, language } = useContext(Store);
   const { id, color, isPinned } = sticker;
   const initialState = {
     title: sticker.title,
     text: sticker.text,
-    showColorPicker: false
+    showColorPicker: false,
   };
 
   const dic = dictionary[language];
@@ -32,26 +29,26 @@ const StickerListItem = ({ sticker }) => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
   }
+  function handleEdit(key, value) {
+    dispatch(editSticker(id, key, value));
+  }
   function handleBlur(e) {
     const { name, value } = e.target;
     handleEdit(name, value);
   }
-  function handleRemoveClick() {
-    dispatch(removeSticker(id));
-  }
-  function handleColorClick() {
-    setState({ ...state, showColorPicker: !showColorPicker });
-  }
-  function handleColorChange(color) {
-    handleEdit('color', color);
-    setState({ ...state, showColorPicker: !showColorPicker });
-  }
-  function handlePinClick() {
-    handleEdit('isPinned', !isPinned);
-  }
-  function handleEdit(key, value) {
-    dispatch(editSticker(id, key, value));
-  }
+  const handleRemoveClick = useCallback(() => dispatch(removeSticker(id)), [dispatch, id]);
+  const handleColorClick = useCallback(
+    () => setState({ ...state, showColorPicker: !showColorPicker }),
+    [state]
+  );
+  const handleColorChange = useCallback(
+    (newColor) => {
+      handleEdit('color', newColor);
+      setState({ ...state, showColorPicker: !showColorPicker });
+    },
+    [handleEdit, setState]
+  );
+  const handlePinClick = useCallback(() => handleEdit('isPinned', !isPinned), [isPinned]);
 
   return (
     <li className="stickers__item sticker">
@@ -86,11 +83,7 @@ const StickerListItem = ({ sticker }) => {
               title={dic.removeStickerAlt}
             />
           </div>
-          <ColorPicker
-            opened={showColorPicker}
-            color={color}
-            onChange={handleColorChange}
-          />
+          <ColorPicker opened={showColorPicker} color={color} onChange={handleColorChange} />
         </div>
         <div className="sticker__details">
           <textarea
@@ -106,9 +99,8 @@ const StickerListItem = ({ sticker }) => {
       </div>
     </li>
   );
-};
+}
 
 StickerListItem.propTypes = stickerListItemPropTypes;
-
 
 export { StickerListItem };

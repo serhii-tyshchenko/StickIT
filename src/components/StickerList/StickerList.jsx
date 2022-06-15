@@ -2,23 +2,22 @@ import { StickerListItem } from './StickerListItem';
 
 import { stickerListPropTypes, stickerListDefaultProps } from './StickerList.props';
 
-
 import './StickerList.scss';
 
-const StickerList = ({ data, pinned }) => {
+function StickerList({ data, pinned }) {
   if (!data || !data.length) {
-    return null
+    return null;
   }
   const componentClassName = `sticker-list${pinned ? ' sticker-list--pinned' : ''}`;
 
   return (
     <ul className={componentClassName}>
-      {data.map(item => (
+      {data.map((item) => (
         <StickerListItem sticker={item} key={item.id} />
       ))}
     </ul>
   );
-};
+}
 
 StickerList.propTypes = stickerListPropTypes;
 StickerList.defaultProps = stickerListDefaultProps;

@@ -1,7 +1,7 @@
 const initialState = {
-  theme: 'light', // light or dark
+  theme: 'light',
   language: 'en',
-  stickers: []
+  stickers: [],
 };
 
 export default initialState;

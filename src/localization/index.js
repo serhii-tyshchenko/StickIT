@@ -1,5 +1,5 @@
-import { default as en } from './en';
-import { default as ua } from './ua';
+import en from './en';
+import ua from './ua';
 
 const localization = { en, ua };
 

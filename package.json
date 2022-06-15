@@ -13,6 +13,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "eslint --ext .js,.jsx src/",
     "stylelint": "stylelint \"src/**/*.scss\""
   },
   "dependencies": {
@@ -20,14 +21,35 @@
     "prop-types": "^15.8.1",
     "react": "latest",
     "react-dom": "latest",
-    "react-scripts": "latest"
+    "react-scripts": "latest",
+    "uuid": "latest"
   },
   "devDependencies": {
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.0",
     "react-test-renderer": "^18.1.0",
     "stylelint": "^14.9.1",
     "stylelint-config-standard-scss": "^4.0.0",
     "stylelint-order": "^5.0.0",
-    "stylelint-scss": "^4.2.0",
-    "uuid": "latest"
+    "stylelint-scss": "^4.2.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

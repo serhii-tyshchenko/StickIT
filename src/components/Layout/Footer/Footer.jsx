@@ -1,9 +1,13 @@
+import { memo } from 'react';
+
 import './Footer.scss';
 
-const Footer = () => (
-  <footer>
-    <div className="wrapper">© Serhii Tyshchenko</div>
-  </footer>
-);
+function Footer() {
+  return (
+    <footer>
+      <div className="wrapper">© Serhii Tyshchenko</div>
+    </footer>
+  );
+}
 
-export { Footer };
+export default memo(Footer);
