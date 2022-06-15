@@ -1,7 +1,7 @@
 import { useState, useContext, useCallback } from 'react';
 import { Store } from 'store';
 import { removeSticker, editSticker } from 'store/actions';
-import dictionary from 'localization';
+import { useLocalization } from 'hooks';
 
 import { ColorPicker } from 'components/ColorPicker';
 import { IconButton } from 'components/IconButton';
@@ -11,7 +11,7 @@ import { stickerListItemPropTypes } from './StickerListItem.props';
 import './StickerListItem.scss';
 
 function StickerListItem({ sticker }) {
-  const { dispatch, language } = useContext(Store);
+  const { dispatch } = useContext(Store);
   const { id, color, isPinned } = sticker;
   const initialState = {
     title: sticker.title,
@@ -19,7 +19,7 @@ function StickerListItem({ sticker }) {
     showColorPicker: false,
   };
 
-  const dic = dictionary[language];
+  const dic = useLocalization();
 
   const [state, setState] = useState(initialState);
   const { title, text, showColorPicker } = state;

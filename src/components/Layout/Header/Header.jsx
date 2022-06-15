@@ -1,7 +1,7 @@
-import { useContext, useCallback, memo, useMemo } from 'react';
+import { useContext, useCallback, memo } from 'react';
 import { Store } from 'store';
+import { useLocalization } from 'hooks';
 import { addSticker, toggleTheme, toggleLanguage } from 'store/actions';
-import dictionary from 'localization';
 
 import { IconButton } from 'components/IconButton';
 
@@ -20,7 +20,7 @@ const themeToggleConfig = {
 function Header() {
   const { theme, language, dispatch } = useContext(Store);
 
-  const dic = useMemo(() => dictionary[language], [language]);
+  const dic = useLocalization();
 
   const onToggleLanguage = useCallback(
     () => dispatch(toggleLanguage(language === 'en' ? 'ua' : 'en')),
