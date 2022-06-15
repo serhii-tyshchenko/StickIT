@@ -1,45 +1,45 @@
-@import '~styles/_variables';
-
+@import '~styles/variables';
 
 .color-picker {
+  position: absolute;
+  top: 100%;
+  right: 58px;
+  display: flex;
+  align-items: center;
+  padding: 0.3rem 1rem 0.3rem 0.3rem;
+  border-radius: 0.25rem;
+  background-color: $color-white;
+  box-shadow:
+    0 0 0 1px rgba(63, 63, 68, 5%),
+    0 1px 3px 0 rgba(63, 63, 68, 15%);
+
+  &::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
     position: absolute;
-    top: 100%;
-    right: 58px;
-    display: flex;
-    align-items: center;
-    padding: 0.3rem 1rem 0.3rem 0.3rem;
-    border-radius: 0.25rem;
     background-color: $color-white;
-    box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05),
-        0 1px 3px 0 rgba(63, 63, 68, 0.15);
+    top: -5px;
+    right: 10px;
+    transform: rotate(45deg);
+  }
 
-    &::before {
-        content: '';
-        display: block;
-        width: 10px;
-        height: 10px;
-        position: absolute;
-        background-color: $color-white;
-        top: -5px;
-        right: 10px;
-        transform: rotate(45deg);
+  &__item {
+    width: 25px;
+    height: 25px;
+    transform: scale(1);
+    cursor: pointer;
+    transition: scale 0.2s ease-in-out;
+
+    &--selected,
+    &:hover {
+      transform: scale(1.15);
+      z-index: 1;
     }
+  }
 
-    &__item {
-        width: 25px;
-        height: 25px;
-        transform: scale(1);
-        cursor: pointer;
-        transition: scale 0.2s ease-in-out;
-
-        &--selected,
-        &:hover {
-            transform: scale(1.15);
-            z-index: 1;
-        }
-    }
-
-    input {
-        display: none;
-    }
+  input {
+    display: none;
+  }
 }
