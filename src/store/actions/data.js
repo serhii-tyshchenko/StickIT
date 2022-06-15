@@ -1,5 +1,5 @@
 import { ADD_STICKER, EDIT_STICKER, REMOVE_STICKER } from '../action-types';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 export const editSticker = (id, key, value) => ({
   type: EDIT_STICKER,
@@ -11,10 +11,10 @@ export const addSticker = () => {
     id: uuidv4(),
     title: '',
     text: '',
-    color: '#fef3bd',
+    color: '#FEF3BD',
     isPinned: false
   };
   return { type: ADD_STICKER, payload: newSticker };
 };
 
-export const removeSticker = id => ({ type: REMOVE_STICKER, payload: id });
+export const removeSticker = (id) => ({ type: REMOVE_STICKER, payload: id });

@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorPicker renders correctly closed state 1`] = `null`;
+
+exports[`ColorPicker renders correctly open state 1`] = `
+<div
+  className="color-picker"
+>
+  <label
+    className="color-picker__item "
+    style={
+      Object {
+        "backgroundColor": "#FCCB00",
+      }
+    }
+    title="#FCCB00"
+  >
+    <input
+      checked={false}
+      name="colors"
+      onChange={[Function]}
+      type="radio"
+      value="#FCCB00"
+    />
+  </label>
+  <label
+    className="color-picker__item "
+    style={
+      Object {
+        "backgroundColor": "#EB9694",
+      }
+    }
+    title="#EB9694"
+  >
+    <input
+      checked={false}
+      name="colors"
+      onChange={[Function]}
+      type="radio"
+      value="#EB9694"
+    />
+  </label>
+  <label
+    className="color-picker__item "
+    style={
+      Object {
+        "backgroundColor": "#FAD0C3",
+      }
+    }
+    title="#FAD0C3"
+  >
+    <input
+      checked={false}
+      name="colors"
+      onChange={[Function]}
+      type="radio"
+      value="#FAD0C3"
+    />
+  </label>
+  <label
+    className="color-picker__item "
+    style={
+      Object {
+        "backgroundColor": "#FEF3BD",
+      }
+    }
+    title="#FEF3BD"
+  >
+    <input
+      checked={false}
+      name="colors"
+      onChange={[Function]}
+      type="radio"
+      value="#FEF3BD"
+    />
+  </label>
+  <label
+    className="color-picker__item "
+    style={
+      Object {
+        "backgroundColor": "#C1E1C5",
+      }
+    }
+    title="#C1E1C5"
+  >
+    <input
+      checked={false}
+      name="colors"
+      onChange={[Function]}
+      type="radio"
+      value="#C1E1C5"
+    />
+  </label>
+  <label
+    className="color-picker__item "
+    style={
+      Object {
+        "backgroundColor": "#BEDADC",
+      }
+    }
+    title="#BEDADC"
+  >
+    <input
+      checked={false}
+      name="colors"
+      onChange={[Function]}
+      type="radio"
+      value="#BEDADC"
+    />
+  </label>
+  <label
+    className="color-picker__item "
+    style={
+      Object {
+        "backgroundColor": "#C4DEF6",
+      }
+    }
+    title="#C4DEF6"
+  >
+    <input
+      checked={false}
+      name="colors"
+      onChange={[Function]}
+      type="radio"
+      value="#C4DEF6"
+    />
+  </label>
+</div>
+`;
