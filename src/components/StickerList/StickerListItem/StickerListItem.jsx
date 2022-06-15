@@ -43,7 +43,8 @@ const StickerListItem = ({ sticker }) => {
     setState({ ...state, showColorPicker: !showColorPicker });
   }
   function handleColorChange(color) {
-    handleEdit('color', color.hex);
+    handleEdit('color', color);
+    setState({ ...state, showColorPicker: !showColorPicker });
   }
   function handlePinClick() {
     handleEdit('isPinned', !isPinned);
@@ -71,14 +72,7 @@ const StickerListItem = ({ sticker }) => {
               icon="color-adjust"
               onClick={handleColorClick}
               title={dic.changeColorAlt}
-            >
-              {showColorPicker ? (
-                <ColorPicker
-                  color={color}
-                  handleColorChange={handleColorChange}
-                />
-              ) : null}
-            </IconButton>
+            />
             <IconButton
               extraClassName="sticker__btn"
               icon={pinButtonIcon}
@@ -92,6 +86,11 @@ const StickerListItem = ({ sticker }) => {
               title={dic.removeStickerAlt}
             />
           </div>
+          <ColorPicker
+            opened={showColorPicker}
+            color={color}
+            onChange={handleColorChange}
+          />
         </div>
         <div className="sticker__details">
           <textarea
