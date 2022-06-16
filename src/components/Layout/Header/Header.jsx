@@ -23,7 +23,7 @@ function Header() {
     [dispatch, theme]
   );
 
-  const AddSticker = () => dispatch(addSticker());
+  const AddSticker = useCallback(() => dispatch(addSticker()), [dispatch]);
 
   const toggleThemeIconTitle = theme === 'light' ? dic.darkThemeTitle : dic.lightThemeTitle;
 
