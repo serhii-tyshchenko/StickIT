@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Store } from 'store';
 import { Header, Footer, StickerListView } from 'components';
 
-const App = () => {
+function App() {
   const { theme } = useContext(Store);
 
   document.documentElement.setAttribute('data-theme', theme);
@@ -16,6 +16,6 @@ const App = () => {
       <Footer />
     </div>
   );
-};
+}
 
 export default App;

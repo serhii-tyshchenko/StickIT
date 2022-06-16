@@ -5,10 +5,10 @@ export const colorPickerPropTypes = {
   opened: PropTypes.bool,
   color: PropTypes.string.isRequired,
   colors: PropTypes.arrayOf(PropTypes.string),
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 export const colorPickerDefaultProps = {
   opened: false,
-  colors: PRDEFINED_COLORS
+  colors: PRDEFINED_COLORS,
 };

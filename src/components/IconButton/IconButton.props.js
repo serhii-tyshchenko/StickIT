@@ -5,11 +5,11 @@ export const iconButtonPropTypes = {
   onClick: PropTypes.func.isRequired,
   extraClassName: PropTypes.string,
   title: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export const iconButtonDefaultProps = {
   extraClassName: '',
   title: '',
-  children: null
+  children: null,
 };

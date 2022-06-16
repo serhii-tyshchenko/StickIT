@@ -1,4 +1,6 @@
-import { createContext, useReducer, useEffect } from 'react';
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-filename-extension */
+import { createContext, useReducer, useEffect, useMemo } from 'react';
 
 import { rootReducer } from './reducers';
 import initialState from './initial-state';
@@ -9,18 +11,16 @@ const Store = createContext();
 
 const savedData = JSON.parse(localStorage.getItem(APP_NAME)) || initialState;
 
-const StoreProvider = props => {
+function StoreProvider({ children }) {
   const [state, dispatch] = useReducer(rootReducer, savedData);
 
   useEffect(() => {
     localStorage.setItem(APP_NAME, JSON.stringify(state));
   });
 
-  return (
-    <Store.Provider value={{ ...state, dispatch }}>
-      {props.children}
-    </Store.Provider>
-  );
-};
+  const value = useMemo(() => ({ ...state, dispatch }), [state]);
+
+  return <Store.Provider value={value}>{children}</Store.Provider>;
+}
 
 export { Store, StoreProvider };

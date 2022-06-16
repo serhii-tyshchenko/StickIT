@@ -6,7 +6,7 @@ const translations = {
   pinStickerAlt: 'Прикріпити стікер',
   removeStickerAlt: 'Видалити стікер',
   lightThemeTitle: 'Включити світлу тему',
-  darkThemeTitle: 'Включити темну тему'
+  darkThemeTitle: 'Включити темну тему',
 };
 
 export default translations;

@@ -1,22 +1,18 @@
+import { getClassName } from 'utils';
+
 import { iconButtonPropTypes, iconButtonDefaultProps } from './IconButton.props';
 
-const IconButton = ({ icon, onClick, extraClassName, title, children }) => {
-
-  const componentClassName = `icon-${icon} ${extraClassName}`;
+function IconButton({ icon, onClick, extraClassName, title, children }) {
+  const componentClassName = getClassName(`icon-${icon}`, extraClassName);
 
   return (
-    <button
-      className={componentClassName}
-      onClick={onClick}
-      title={title}
-      type="button"
-    >
+    <button type="button" className={componentClassName} onClick={onClick} title={title}>
       {children}
     </button>
   );
-};
+}
 
 IconButton.propTypes = iconButtonPropTypes;
 IconButton.defaultProps = iconButtonDefaultProps;
 
-export { IconButton };
+export default IconButton;

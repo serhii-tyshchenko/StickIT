@@ -1,114 +1,86 @@
-import { useState, useContext } from 'react';
-import { Store } from 'store';
-import { removeSticker, editSticker } from 'store/actions';
-import { default as dictionary } from 'localization';
+import { useState, useCallback } from 'react';
+import { useLocalization } from 'hooks';
 
 import { ColorPicker } from 'components/ColorPicker';
 import { IconButton } from 'components/IconButton';
+import useSticker from '../useSticker';
+
+import { NAME_SPACE } from './constants';
 
 import { stickerListItemPropTypes } from './StickerListItem.props';
 
 import './StickerListItem.scss';
 
-const StickerListItem = ({ sticker }) => {
+function StickerListItem({ sticker }) {
+  const { color, isPinned, title, text } = sticker;
+  const [state, setState] = useState({ title, text });
+  const handleChange = useCallback(
+    (ev) => setState({ ...state, [ev.target.name]: ev.target.value }),
+    [state]
+  );
+
+  const dic = useLocalization();
+
   const {
-    dispatch,
-    language,
-  } = useContext(Store);
-  const { id, color, isPinned } = sticker;
-  const initialState = {
-    title: sticker.title,
-    text: sticker.text,
-    showColorPicker: false
-  };
-
-  const dic = dictionary[language];
-
-  const [state, setState] = useState(initialState);
-  const { title, text, showColorPicker } = state;
-  const pinButtonIcon = isPinned ? 'pin' : 'pin-outline';
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setState({ ...state, [name]: value });
-  }
-  function handleBlur(e) {
-    const { name, value } = e.target;
-    handleEdit(name, value);
-  }
-  function handleRemoveClick() {
-    dispatch(removeSticker(id));
-  }
-  function handleColorClick() {
-    setState({ ...state, showColorPicker: !showColorPicker });
-  }
-  function handleColorChange(color) {
-    handleEdit('color', color);
-    setState({ ...state, showColorPicker: !showColorPicker });
-  }
-  function handlePinClick() {
-    handleEdit('isPinned', !isPinned);
-  }
-  function handleEdit(key, value) {
-    dispatch(editSticker(id, key, value));
-  }
+    isColorPickerOpen,
+    toggleColorPicker,
+    handleRemoveStickerClick,
+    handleBlur,
+    handlePinStickerClick,
+    handleColorChange,
+  } = useSticker(sticker);
 
   return (
-    <li className="stickers__item sticker">
-      <div className="sticker__container" style={{ backgroundColor: color }}>
-        <div className="sticker__header">
+    <li className={NAME_SPACE}>
+      <div className={`${NAME_SPACE}__container`} style={{ backgroundColor: color }}>
+        <div className={`${NAME_SPACE}__header`}>
           <input
-            className="sticker__title"
+            className={`${NAME_SPACE}__title`}
             type="text"
-            value={title}
+            value={state.title}
             name="title"
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder={dic.stickerTitlePlaceholder}
           />
-          <div className="sticker__controls">
+          <div className={`${NAME_SPACE}__controls`}>
             <IconButton
-              extraClassName="sticker__btn"
+              extraClassName={`${NAME_SPACE}__btn`}
               icon="color-adjust"
-              onClick={handleColorClick}
+              onClick={toggleColorPicker}
               title={dic.changeColorAlt}
             />
             <IconButton
-              extraClassName="sticker__btn"
-              icon={pinButtonIcon}
-              onClick={handlePinClick}
+              extraClassName={`${NAME_SPACE}__btn`}
+              icon={isPinned ? 'pin' : 'pin-outline'}
+              onClick={handlePinStickerClick}
               title={dic.pinStickerAlt}
             />
             <IconButton
-              extraClassName="sticker__btn"
+              extraClassName={`${NAME_SPACE}__btn`}
               icon="trash-empty"
-              onClick={handleRemoveClick}
+              onClick={handleRemoveStickerClick}
               title={dic.removeStickerAlt}
             />
           </div>
-          <ColorPicker
-            opened={showColorPicker}
-            color={color}
-            onChange={handleColorChange}
-          />
+          <ColorPicker opened={isColorPickerOpen} color={color} onChange={handleColorChange} />
         </div>
-        <div className="sticker__details">
+        <div className={`${NAME_SPACE}__details`}>
           <textarea
-            className="sticker__text"
+            className={`${NAME_SPACE}__text`}
             name="text"
             onChange={handleChange}
             onBlur={handleBlur}
             type="textarea"
-            value={text}
+            value={state.text}
             placeholder={dic.stickerTextPlaceholder}
           />
         </div>
       </div>
     </li>
   );
-};
+}
 
 StickerListItem.propTypes = stickerListItemPropTypes;
-
 
 export { StickerListItem };

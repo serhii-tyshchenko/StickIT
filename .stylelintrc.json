@@ -1,0 +1,12 @@
+{
+    "extends": "stylelint-config-standard-scss",
+    "plugins": [
+        "stylelint-scss",
+        "stylelint-order"
+    ],
+    "rules": {
+        "string-quotes": "single",
+        "declaration-block-no-duplicate-properties": true,
+        "rule-empty-line-before": "always"
+    }
+}

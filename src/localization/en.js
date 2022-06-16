@@ -6,7 +6,7 @@ const translations = {
   pinStickerAlt: 'Pin sticker',
   removeStickerAlt: 'Remove sticker',
   lightThemeTitle: 'Switch to light theme',
-  darkThemeTitle: 'Switch to dark theme'
+  darkThemeTitle: 'Switch to dark theme',
 };
 
 export default translations;
