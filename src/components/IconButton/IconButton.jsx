@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { getClassName } from 'utils';
 
 import { iconButtonPropTypes, iconButtonDefaultProps } from './IconButton.props';
@@ -15,4 +17,4 @@ function IconButton({ icon, onClick, extraClassName, title, children }) {
 IconButton.propTypes = iconButtonPropTypes;
 IconButton.defaultProps = iconButtonDefaultProps;
 
-export default IconButton;
+export default memo(IconButton);

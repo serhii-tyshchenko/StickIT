@@ -1,11 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Store } from 'store';
 import { Header, Footer, StickerListView } from 'components';
 
 function App() {
   const { theme } = useContext(Store);
 
-  document.documentElement.setAttribute('data-theme', theme);
+  useEffect(() => document.documentElement.setAttribute('data-theme', theme), [theme]);
 
   return (
     <div className="container">
