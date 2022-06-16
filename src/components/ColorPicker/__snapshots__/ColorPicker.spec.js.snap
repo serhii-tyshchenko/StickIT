@@ -7,7 +7,8 @@ exports[`ColorPicker renders correctly open state 1`] = `
   className="color-picker"
 >
   <label
-    className="color-picker__item "
+    className="color-picker__item"
+    htmlFor="color-0"
     style={
       Object {
         "backgroundColor": "#FCCB00",
@@ -17,6 +18,7 @@ exports[`ColorPicker renders correctly open state 1`] = `
   >
     <input
       checked={false}
+      id="color-0"
       name="colors"
       onChange={[Function]}
       type="radio"
@@ -24,7 +26,8 @@ exports[`ColorPicker renders correctly open state 1`] = `
     />
   </label>
   <label
-    className="color-picker__item "
+    className="color-picker__item"
+    htmlFor="color-1"
     style={
       Object {
         "backgroundColor": "#EB9694",
@@ -34,6 +37,7 @@ exports[`ColorPicker renders correctly open state 1`] = `
   >
     <input
       checked={false}
+      id="color-1"
       name="colors"
       onChange={[Function]}
       type="radio"
@@ -41,7 +45,8 @@ exports[`ColorPicker renders correctly open state 1`] = `
     />
   </label>
   <label
-    className="color-picker__item "
+    className="color-picker__item"
+    htmlFor="color-2"
     style={
       Object {
         "backgroundColor": "#FAD0C3",
@@ -51,6 +56,7 @@ exports[`ColorPicker renders correctly open state 1`] = `
   >
     <input
       checked={false}
+      id="color-2"
       name="colors"
       onChange={[Function]}
       type="radio"
@@ -58,7 +64,8 @@ exports[`ColorPicker renders correctly open state 1`] = `
     />
   </label>
   <label
-    className="color-picker__item "
+    className="color-picker__item"
+    htmlFor="color-3"
     style={
       Object {
         "backgroundColor": "#FEF3BD",
@@ -68,6 +75,7 @@ exports[`ColorPicker renders correctly open state 1`] = `
   >
     <input
       checked={false}
+      id="color-3"
       name="colors"
       onChange={[Function]}
       type="radio"
@@ -75,7 +83,8 @@ exports[`ColorPicker renders correctly open state 1`] = `
     />
   </label>
   <label
-    className="color-picker__item "
+    className="color-picker__item"
+    htmlFor="color-4"
     style={
       Object {
         "backgroundColor": "#C1E1C5",
@@ -85,6 +94,7 @@ exports[`ColorPicker renders correctly open state 1`] = `
   >
     <input
       checked={false}
+      id="color-4"
       name="colors"
       onChange={[Function]}
       type="radio"
@@ -92,7 +102,8 @@ exports[`ColorPicker renders correctly open state 1`] = `
     />
   </label>
   <label
-    className="color-picker__item "
+    className="color-picker__item"
+    htmlFor="color-5"
     style={
       Object {
         "backgroundColor": "#BEDADC",
@@ -102,6 +113,7 @@ exports[`ColorPicker renders correctly open state 1`] = `
   >
     <input
       checked={false}
+      id="color-5"
       name="colors"
       onChange={[Function]}
       type="radio"
@@ -109,7 +121,8 @@ exports[`ColorPicker renders correctly open state 1`] = `
     />
   </label>
   <label
-    className="color-picker__item "
+    className="color-picker__item"
+    htmlFor="color-6"
     style={
       Object {
         "backgroundColor": "#C4DEF6",
@@ -119,6 +132,7 @@ exports[`ColorPicker renders correctly open state 1`] = `
   >
     <input
       checked={false}
+      id="color-6"
       name="colors"
       onChange={[Function]}
       type="radio"

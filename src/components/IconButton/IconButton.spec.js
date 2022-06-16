@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import IconButton from './index';
+import { IconButton } from './index';
 
 describe('IconButton', () => {
   it('renders correctly', () => {

@@ -1,23 +1,24 @@
 /* eslint-disable react/no-array-index-key */
+import { getClassName } from 'utils';
 import { colorPickerPropTypes, colorPickerDefaultProps } from './ColorPicker.props';
 import { NAME_SPACE } from './constants';
 
 import './ColorPicker.scss';
 
 function ColorPicker({ opened, colors, color, onChange }) {
+  const handleChange = (ev) => onChange(ev.target.value);
+
   if (!opened) {
     return null;
   }
-
-  const handleChange = (ev) => onChange(ev.target.value);
 
   return (
     <div className={NAME_SPACE}>
       {colors.map((itemColor, ind) => (
         <label
-          className={`${NAME_SPACE}__item ${
-            itemColor === color ? `${NAME_SPACE}__item--selected` : ''
-          }`}
+          className={getClassName(`${NAME_SPACE}__item`, {
+            [`${NAME_SPACE}__item--selected`]: itemColor === color,
+          })}
           style={{ backgroundColor: itemColor }}
           key={`color-${ind}`}
           title={itemColor}
