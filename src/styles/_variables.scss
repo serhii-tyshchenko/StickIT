@@ -1,6 +1,7 @@
 // fonts
 $font-icon: 'fontello';
 $font-primary: 'Segoe UI', tahoma, geneva, verdana, sans-serif;
+$font-secondary: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 // palette
 $color-white: rgb(255, 255, 255);
@@ -21,3 +22,12 @@ $color-green: rgb(40, 167, 69);
 $color-teal: rgb(32, 201, 151);
 $color-cyan: rgb(23, 162, 184);
 $color-grey: rgb(173, 181, 189);
+
+// media breaks
+$break-4k: 2560px;
+$break-laptop-large: 1440px;
+$break-laptop: 1024px;
+$break-tablet: 768px;
+$break-mobile-large: 425px;
+$break-mobile-medium: 375px;
+$break-mobile-small: 320px;

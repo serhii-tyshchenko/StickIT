@@ -1,27 +1,22 @@
+@import '~styles/variables';
+@import '~styles/mixins';
+
 .sticker-list {
   display: flex;
   flex-wrap: wrap;
+  gap: 4rem 3rem;
   justify-content: space-around;
+  padding: 2rem;
   list-style-type: none;
 
   &--pinned {
     flex-wrap: nowrap;
     justify-content: space-between;
-
-    &::before,
-    &::after {
-      content: '';
-    }
-
-    margin-bottom: 50px;
+    margin-bottom: 1.5rem;
     overflow-x: auto;
 
-    .sticker:first-child {
-      padding-left: 0;
-    }
-
-    .sticker:last-child {
-      padding-right: 0;
+    @include for-size(tablet) {
+      justify-content: space-around;
     }
   }
 }
