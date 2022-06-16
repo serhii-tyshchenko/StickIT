@@ -1,21 +1,12 @@
 import { useContext, useCallback, memo } from 'react';
 import { Store } from 'store';
-import { useLocalization } from 'hooks';
 import { addSticker, toggleTheme, toggleLanguage } from 'store/actions';
+import { useLocalization } from 'hooks';
+import { IconButton } from 'components';
 
-import { IconButton } from 'components/IconButton';
+import { NAME_SPACE, themeIconConfig, themeToggleConfig } from './constants';
 
 import './Header.scss';
-
-const themeIconConfig = {
-  light: 'moon',
-  dark: 'sun',
-};
-
-const themeToggleConfig = {
-  light: 'dark',
-  dark: 'light',
-};
 
 function Header() {
   const { theme, language, dispatch } = useContext(Store);
@@ -37,21 +28,21 @@ function Header() {
   const toggleThemeIconTitle = theme === 'light' ? dic.darkThemeTitle : dic.lightThemeTitle;
 
   return (
-    <header className="header">
+    <header className={NAME_SPACE}>
       <div className="wrapper header-content">
-        <div className="header-logo">StickIt</div>
-        <div className="header-menu">
+        <div className={`${NAME_SPACE}-logo`}>StickIt</div>
+        <div className={`${NAME_SPACE}-menu`}>
           <IconButton
-            extraClassName="header-menu__btn"
+            extraClassName={`${NAME_SPACE}-menu__btn`}
             icon="plus"
             onClick={AddSticker}
             title={dic.addNewStickerAlt}
           />
-          <button type="button" className="header-menu__btn" onClick={onToggleLanguage}>
+          <button type="button" className={`${NAME_SPACE}-menu__btn`} onClick={onToggleLanguage}>
             {language}
           </button>
           <IconButton
-            extraClassName="header-menu__btn"
+            extraClassName={`${NAME_SPACE}-menu__btn`}
             icon={themeIconConfig[theme]}
             onClick={handleToggleTheme}
             title={toggleThemeIconTitle}
