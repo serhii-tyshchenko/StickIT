@@ -6,15 +6,15 @@ $sticker-size: 15rem;
 .sticker {
   $self: &;
 
+  box-shadow: 5px 5px 7px rgb(33 33 33 / 70%);
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  width: $sticker-size;
   height: $sticker-size;
-  box-shadow: 5px 5px 7px rgba(33, 33, 33, 70%);
+  padding: 0.5rem;
   transform: rotate(-6deg);
   transition: transform $transition-duration linear;
-  padding: 0.5rem;
+  width: $sticker-size;
 
   &:nth-child(even) {
     transform: rotate(4deg);
@@ -34,27 +34,27 @@ $sticker-size: 15rem;
   }
 
   &__header {
-    position: relative;
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: space-between;
     margin-bottom: 0.5rem;
+    position: relative;
   }
 
   &__title {
-    width: 100%;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: bold;
     margin-right: 0.5rem;
     padding: 0;
-    font-weight: bold;
-    font-size: 1.25rem;
     text-overflow: ellipsis;
-    border: none;
-    background: none;
+    width: 100%;
   }
 
   &__controls {
-    display: flex;
     align-items: center;
+    display: flex;
     opacity: 0;
     transition: opacity $transition_duration linear;
 
@@ -64,13 +64,13 @@ $sticker-size: 15rem;
   }
 
   &__btn {
-    position: relative;
-    font-weight: bold;
-    font-size: 0.85rem;
-    border: none;
     background: none;
+    border: none;
     cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: bold;
     opacity: 0.5;
+    position: relative;
 
     &:not(:last-child) {
       margin-right: 0.25rem;
@@ -82,14 +82,14 @@ $sticker-size: 15rem;
   }
 
   &__text {
-    flex-grow: 1;
-    padding: 0.25em;
-    font-size: 1.25rem;
-    font-family: $font-secondary;
-    font-style: italic;
-    border: none;
     background: inherit;
-    resize: none;
+    border: none;
+    flex-grow: 1;
+    font-family: $font-secondary;
+    font-size: 1.25rem;
+    font-style: italic;
     overflow: auto;
+    padding: 0.25em;
+    resize: none;
   }
 }
