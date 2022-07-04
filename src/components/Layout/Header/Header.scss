@@ -5,8 +5,8 @@
 }
 
 .header-content {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
   padding: 1rem;
 }
@@ -16,16 +16,16 @@
 }
 
 .header-menu {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
   width: 200px;
 
   &__btn {
     color: inherit;
     font-size: 2rem;
-    text-transform: uppercase;
     opacity: 0.8;
+    text-transform: uppercase;
     transition: opacity 300ms ease-in;
 
     &:hover {

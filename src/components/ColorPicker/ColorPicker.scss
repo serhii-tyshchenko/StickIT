@@ -3,34 +3,34 @@
 .color-picker {
   $item-size: 1.25rem;
 
-  position: absolute;
-  top: 120%;
-  right: 44px;
-  display: flex;
   align-items: center;
-  padding: 0.3rem 1rem 0.3rem 0.3rem;
-  border-radius: 0.25rem;
   background-color: $color-white;
-  box-shadow: 2px 2px 3px rgba(33, 33, 33, 70%);
+  border-radius: 0.25rem;
+  box-shadow: 2px 2px 3px rgb(33 33 33 / 70%);
+  display: flex;
+  padding: 0.3rem 1rem 0.3rem 0.3rem;
+  position: absolute;
+  right: 44px;
+  top: 120%;
 
   &::before {
+    background-color: $color-white;
     content: '';
     display: block;
-    width: $item-size;
     height: $item-size;
     position: absolute;
-    background-color: $color-white;
-    top: -5px;
     right: 10px;
+    top: -5px;
     transform: rotate(45deg);
+    width: $item-size;
   }
 
   &__item {
-    width: 20px;
+    cursor: pointer;
     height: 20px;
     transform: scale(1);
-    cursor: pointer;
     transition: scale 0.2s ease-in-out;
+    width: 20px;
 
     &--selected,
     &:hover {

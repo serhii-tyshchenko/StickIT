@@ -6,7 +6,6 @@
     ],
     "rules": {
         "string-quotes": "single",
-        "declaration-block-no-duplicate-properties": true,
-        "rule-empty-line-before": "always"
+        "order/properties-alphabetical-order": true
     }
 }
