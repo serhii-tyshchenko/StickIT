@@ -9,20 +9,19 @@
   "description": "A simple sticker app.",
   "license": "MIT",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint --ext .js,.jsx src/",
-    "stylelint": "stylelint \"src/**/*.scss\""
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "lint": "eslint --ext .js,.jsx src/"
   },
   "dependencies": {
+    "@vitejs/plugin-react": "^4.3.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
     "sass": "^1.69.5",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "vite": "^5.4.8"
   },
   "devDependencies": {
     "eslint": "^8.17.0",
@@ -30,26 +29,6 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.30.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^2.7.0",
-    "react-test-renderer": "^18.1.0",
-    "stylelint": "^14.9.1",
-    "stylelint-config-standard-scss": "^4.0.0",
-    "stylelint-order": "^5.0.0",
-    "stylelint-scss": "^4.2.0"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "eslint-plugin-prettier": "^4.0.0"
   }
 }
