@@ -5,7 +5,7 @@ import './Footer.scss';
 function Footer() {
   return (
     <footer>
-      <div className="wrapper">© Serhii Tyshchenko, v.1.2.2</div>
+      <div className="wrapper">© Serhii Tyshchenko, v.1.2.3</div>
     </footer>
   );
 }
